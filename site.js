@@ -268,6 +268,125 @@
   }
 
   /* =========================================================
+     6. PROJECT GALLERY LIGHTBOX
+     ─────────────────────────────────────────────────────────
+     Binds every .gallery-img on project pages to a shared
+     lightbox with caption, counter, arrows, and keyboard nav.
+  ========================================================= */
+
+  function initProjectLightbox() {
+    var galleryImages = $$('.gallery-img');
+    if (!galleryImages.length) return;
+
+    var images = galleryImages.filter(function (img) {
+      return !!img.getAttribute('src');
+    });
+    if (!images.length) return;
+
+    var lightbox = document.createElement('div');
+    lightbox.className = 'lightbox';
+    lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Image lightbox');
+
+    lightbox.innerHTML = [
+      '<button class="lightbox__close" type="button" aria-label="Close image">&times;</button>',
+      '<button class="lightbox__nav lightbox__prev" type="button" aria-label="Previous image">&#10094;</button>',
+      '<div class="lightbox__inner">',
+      '  <img class="lightbox__img" alt="" />',
+      '  <p class="lightbox__caption"></p>',
+      '</div>',
+      '<button class="lightbox__nav lightbox__next" type="button" aria-label="Next image">&#10095;</button>',
+      '<div class="lightbox__counter" aria-live="polite"></div>'
+    ].join('');
+
+    document.body.appendChild(lightbox);
+
+    var lightboxImage = $('.lightbox__img', lightbox);
+    var lightboxCaption = $('.lightbox__caption', lightbox);
+    var lightboxCounter = $('.lightbox__counter', lightbox);
+    var closeButton = $('.lightbox__close', lightbox);
+    var previousButton = $('.lightbox__prev', lightbox);
+    var nextButton = $('.lightbox__next', lightbox);
+
+    var currentIndex = -1;
+    var previousBodyOverflow = '';
+
+    function setImage(index) {
+      var activeImage = images[index];
+      var source = activeImage.currentSrc || activeImage.getAttribute('src') || '';
+      var caption = activeImage.getAttribute('data-caption') || activeImage.getAttribute('alt') || '';
+
+      lightboxImage.src = source;
+      lightboxImage.alt = activeImage.getAttribute('alt') || '';
+      lightboxCaption.textContent = caption;
+      lightboxCounter.textContent = (index + 1) + ' / ' + images.length;
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = previousBodyOverflow;
+      currentIndex = -1;
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      setImage(currentIndex);
+      previousBodyOverflow = document.body.style.overflow;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      closeButton.focus();
+    }
+
+    function moveBy(step) {
+      if (currentIndex < 0) return;
+      currentIndex = (currentIndex + step + images.length) % images.length;
+      setImage(currentIndex);
+    }
+
+    images.forEach(function (image, index) {
+      image.setAttribute('tabindex', '0');
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', 'Open image ' + (index + 1) + ' of ' + images.length);
+
+      image.addEventListener('click', function () {
+        openLightbox(index);
+      });
+
+      image.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(index);
+        }
+      });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    previousButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      moveBy(-1);
+    });
+    nextButton.addEventListener('click', function (event) {
+      event.stopPropagation();
+      moveBy(1);
+    });
+
+    lightbox.addEventListener('click', function (event) {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'ArrowLeft') moveBy(-1);
+      if (event.key === 'ArrowRight') moveBy(1);
+    });
+  }
+
+  /* =========================================================
      INIT
   ========================================================= */
 
@@ -277,6 +396,7 @@
     initScrollReveals();
     initForms();
     initSmoothScroll();
+    initProjectLightbox();
   });
 
 })();
