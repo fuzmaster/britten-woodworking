@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact — Britten Woodworking</title>
+  <meta
+    name="description"
+    content="Contact Britten Woodworking for custom commissions, cabinetry, millwork, and weatherstrip installation in Connecticut."
+  />
+
+  <meta property="og:title" content="Contact — Britten Woodworking" />
+  <meta property="og:description" content="Reach out to start a custom woodworking commission in Connecticut." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.brittenwoodworking.com/contact" />
+
+  <link rel="canonical" href="https://www.brittenwoodworking.com/contact" />
+
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/hero-white-panel-fireplace.jpg" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+
+      <a href="index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img
+          src="Logo_BrandV2.png"
+          alt="Britten Woodworking — Hand-Crafted USA"
+          class="site-nav__logo-img"
+          width="99"
+          height="48"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+          <li><a href="about.html">About</a></li>
+
+          <li class="site-nav__item--has-dropdown">
+            <a href="work.html" class="site-nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              Work
+            </a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="projects/cabinetry.html">Cabinetry</a></li>
+              <li><a href="projects/entryways.html">Entryways</a></li>
+              <li><a href="projects/paneling.html">Paneling</a></li>
+              <li><a href="projects/moldings.html">Moldings</a></li>
+              <li><a href="projects/corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="projects/shutters.html">Shutters</a></li>
+              <li><a href="projects/storm-doors.html">Storm Doors</a></li>
+            </ul>
+          </li>
+
+          <li><a href="services.html">Services</a></li>
+          <li><a href="weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li>
+            <a href="https://linktr.ee/brittenwoodworking" target="_blank" rel="noopener noreferrer">Leave a Review</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <a href="contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+
+    </div>
+  </header>
+
+
+  <main id="main-content">
+
+    <section class="service-hero" aria-labelledby="contact-heading">
+      <div class="container">
+        <span class="eyebrow service-hero__eyebrow">Get in Touch — Connecticut</span>
+        <h1 id="contact-heading" class="h2-section service-hero__heading">Contact <em>Me</em></h1>
+        <p class="lead service-hero__lead">Share your project details and I’ll follow up to discuss scope and timing.</p>
+      </div>
+    </section>
+
+    <section class="py-section section--raised-top"  aria-labelledby="contact-form-heading">
+      <div class="container">
+        <div class="services-contact__grid">
+
+          <div class="services-contact__copy">
+            <h2 id="contact-form-heading" class="h2-section">Start Your <em>Commission</em></h2>
+            <p class="lead u-mt-xl u-mb-lg" >
+              Call, email, or use the form to ask about cabinetry, entryways,
+              paneling, moldings, shutters, storm doors, or weatherstrip installation.
+            </p>
+            <ul role="list" class="site-footer__contact-list u-mb-xl" >
+              <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
+              <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+              <li class="site-footer__location">Connecticut, USA</li>
+            </ul>
+          </div>
+
+          <div class="services-contact__form-wrap">
+            <form class="contact-form" aria-label="Contact enquiry form" name="contact" data-netlify="true" method="POST" action="/thank-you">
+      <input type="hidden" name="form-name" value="contact" />
+
+              <div class="contact-form__row contact-form__row--two-col">
+                <div class="contact-form__field">
+                  <label for="contact-first-name" class="contact-form__label">First Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="contact-first-name" name="first_name" class="contact-form__input" required autocomplete="given-name" />
+                </div>
+                <div class="contact-form__field">
+                  <label for="contact-last-name" class="contact-form__label">Last Name <span aria-hidden="true">*</span></label>
+                  <input type="text" id="contact-last-name" name="last_name" class="contact-form__input" required autocomplete="family-name" />
+                </div>
+              </div>
+
+              <div class="contact-form__field">
+                <label for="contact-email" class="contact-form__label">Email <span aria-hidden="true">*</span></label>
+                <input type="email" id="contact-email" name="email" class="contact-form__input" required autocomplete="email" />
+              </div>
+
+              <div class="contact-form__field">
+                <label for="contact-message" class="contact-form__label">Message <span aria-hidden="true">*</span></label>
+                <textarea id="contact-message" name="message" class="contact-form__textarea" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary contact-form__submit">Discuss Your Project</button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
+      </div>
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md" >Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
+          <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md" >Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+    </div>
+  </footer>
+
+  <script src="site.js" defer></script>
+</body>
+</html>

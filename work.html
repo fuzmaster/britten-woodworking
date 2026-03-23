@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Britten Woodworking</title>
+  <meta name="description" content="Browse Britten Woodworking projects including cabinetry, entryways, paneling, moldings, corner cabinetry, shutters, and storm doors in Connecticut." />
+  <meta property="og:title" content="Work — Britten Woodworking" />
+  <meta property="og:description" content="Portfolio of 18th-century woodworking commissions in Connecticut." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.brittenwoodworking.com/work" />
+  <link rel="canonical" href="https://www.brittenwoodworking.com/work" />
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/card-cabinetry-red-hutch.jpg" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .work-card__image {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .card { overflow: hidden; }
+    .card:hover .work-card__image { transform: scale(1.03); }
+    .work-card__image--landscape-src { object-position: center top; }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+      <a href="index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img src="Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
+             class="site-nav__logo-img" width="99" height="48"
+             fetchpriority="high" loading="eager" decoding="async" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+          <li><a href="about.html">About</a></li>
+          <li class="site-nav__item--has-dropdown">
+            <a href="work.html" class="site-nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">Work</a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="projects/cabinetry.html">Cabinetry</a></li>
+              <li><a href="projects/entryways.html">Entryways</a></li>
+              <li><a href="projects/paneling.html">Paneling</a></li>
+              <li><a href="projects/moldings.html">Moldings</a></li>
+              <li><a href="projects/corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="projects/shutters.html">Shutters</a></li>
+              <li><a href="projects/storm-doors.html">Storm Doors</a></li>
+            </ul>
+          </li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </nav>
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <a href="contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <section class="service-hero" aria-labelledby="work-heading">
+      <div class="container">
+        <span class="eyebrow service-hero__eyebrow">Portfolio &mdash; Connecticut</span>
+        <h1 id="work-heading" class="h2-section service-hero__heading">Recent <em>Work</em></h1>
+        <p class="lead service-hero__lead">Browse project categories and view full galleries.</p>
+      </div>
+    </section>
+
+    <section class="py-section" aria-label="Project categories">
+      <div class="container">
+        <div class="grid-auto-fit">
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-cabinetry-red-hutch.jpg"
+                 
+                 alt="Hand-built red painted hutch with beadboard back and open upper shelving"
+                 class="work-card__image u-op-15"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Cabinetry</h2>
+              <a href="projects/cabinetry.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-entryway-green-door.jpg"
+                 alt="Triangular pediment entryway with fluted pilasters and dark stained door"
+                 class="work-card__image work-card__image--landscape-src"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Entryways</h2>
+              <a href="projects/entryways.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-paneling-darkwood.jpg"
+                 
+                 alt="Dark wood full-height raised panel installation, colonial interior"
+                 class="work-card__image u-op-20"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Paneling</h2>
+              <a href="projects/paneling.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-moldings-white-crown.jpg"
+                 
+                 alt="Detailed white painted crown moulding assembly showing dentil course and cove profiles"
+                 class="work-card__image u-op-10"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Moldings</h2>
+              <a href="projects/moldings.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-corner-cabinet-blue.jpg"
+                 
+                 alt="White glazed corner cabinet with arched upper door and raised panel lower sections"
+                 class="work-card__image u-op-10"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Corner Cabinetry</h2>
+              <a href="projects/corner-cabinetry.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-shutters-white-interior.png"
+                 alt="Installed raised-panel interior window shutters folded open, cream painted finish"
+                 class="work-card__image"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Shutters</h2>
+              <a href="projects/shutters.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__image-wrap">
+            <img src="images/card-storm-doors-exterior.jpg"
+                 alt="Dark stained board-and-batten storm door with triangular pediment surround"
+                 class="work-card__image"
+                 loading="lazy" decoding="async" />
+          </div>
+            <div class="card__body">
+              <p class="card__meta">Portfolio</p>
+              <h2 class="card__title">Storm Doors</h2>
+              <a href="projects/storm-doors.html" class="btn btn-ghost">View</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+    <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
+      </div>
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md">Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
+          <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md">Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+    </div>
+  </footer>
+
+  <script src="site.js" defer></script>
+</body>
+</html>

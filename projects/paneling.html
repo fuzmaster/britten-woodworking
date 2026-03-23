@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paneling — Britten Woodworking</title>
+  <meta name="description" content="Custom 18th-century reproduction paneling by Britten Woodworking. Raised panel wainscoting, full-wall paneling, knee wall cabinetry, and period-accurate interiors. Connecticut." />
+  <link rel="canonical" href="https://www.brittenwoodworking.com/projects/paneling" />
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/paneling/pan-variety-01.jpg" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .gallery-img{
+      width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;
+      transition:transform 0.4s cubic-bezier(0.25,0.1,0.25,1),filter 0.3s ease;
+    }
+    .gallery-img:hover{transform:scale(1.03);filter:brightness(1.05);}
+    .photo-cell{overflow:hidden;position:relative;}
+
+    /* Lightbox */
+    .lightbox{
+      display:none;position:fixed;inset:0;z-index:1000;
+      background:rgba(10,8,6,0.96);
+      align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;
+    }
+    .lightbox.is-open{display:flex;}
+    .lightbox__inner{
+      position:relative;max-width:min(90vw,1100px);max-height:90vh;
+      display:flex;flex-direction:column;align-items:center;gap:1rem;
+    }
+    .lightbox__img{max-width:100%;max-height:82vh;object-fit:contain;display:block;border:1px solid rgba(184,134,78,0.25);}
+    .lightbox__caption{font-family:'Lora',serif;font-size:0.8rem;font-style:italic;color:#A89880;letter-spacing:0.06em;text-align:center;}
+    .lightbox__close{
+      position:fixed;top:1.25rem;right:1.5rem;background:none;
+      border:1px solid rgba(184,134,78,0.4);color:#B8864E;
+      font-size:1.5rem;line-height:1;width:2.5rem;height:2.5rem;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      transition:background 0.2s,color 0.2s;
+    }
+    .lightbox__close:hover{background:rgba(184,134,78,0.15);color:#F0EBE3;}
+    .lightbox__nav{
+      position:fixed;top:50%;transform:translateY(-50%);
+      background:rgba(23,20,16,0.7);border:1px solid rgba(184,134,78,0.3);
+      color:#B8864E;font-size:1.75rem;width:3rem;height:3rem;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      transition:background 0.2s,color 0.2s;z-index:1001;
+    }
+    .lightbox__nav:hover{background:rgba(184,134,78,0.2);color:#F0EBE3;}
+    .lightbox__prev{left:1rem;}
+    .lightbox__next{right:1rem;}
+    .lightbox__counter{
+      position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);
+      font-family:'Lora',serif;font-size:0.75rem;font-style:italic;
+      color:#6B5E4E;letter-spacing:0.1em;
+    }
+
+    /* Section badge */
+    .section-badge{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      font-family:'Lora',serif;font-size:0.7rem;font-style:italic;
+      letter-spacing:0.12em;text-transform:uppercase;color:#6B5E4E;margin-bottom:0.5rem;
+    }
+    .section-badge__num{
+      font-family:'Playfair Display',serif;font-size:0.65rem;font-weight:700;
+      color:#B8864E;border:1px solid rgba(184,134,78,0.35);padding:0.1rem 0.4rem;
+    }
+
+    /*
+      Knee wall grid — matches screenshot layout:
+      Col 1: wide landscape (R1), wide landscape (R2)
+      Col 2: wide landscape (R1), wide landscape (R2)
+      Col 3: tall portrait spanning R1+R2
+
+      [1][2][3]
+      [4][5][3]
+    */
+    .kneewall-grid{
+      display:grid;
+      grid-template-columns:2fr 2fr 1fr;
+      grid-template-rows:auto auto;
+      gap:var(--space-sm);
+      grid-template-areas:
+        "a b c"
+        "d e c";
+    }
+    .kneewall-grid .photo-cell:nth-child(3){grid-area:c;}
+    @media(max-width:640px){
+      .kneewall-grid{
+        grid-template-columns:1fr 1fr;
+        grid-template-areas:
+          "a b"
+          "d e"
+          "c c";
+      }
+    }
+
+    /*
+      Variety grid — matches screenshot layout:
+      3-col, 5 rows
+      Col 1 spans rows 1–2 (tall portrait)
+      Col 1 spans rows 3–4 (tall portrait)
+      Col 2 and 3 fill normally
+    */
+    .variety-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:var(--space-sm);
+    }
+    .variety-grid .span-2{grid-row:span 2;}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img src="../Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
+             class="site-nav__logo-img" width="99" height="48"
+             fetchpriority="high" loading="eager" decoding="async" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+          <li><a href="../about.html">About</a></li>
+          <li class="site-nav__item--has-dropdown">
+            <a href="../work.html" class="site-nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">Work</a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="cabinetry.html">Cabinetry</a></li>
+              <li><a href="entryways.html">Entryways</a></li>
+              <li><a href="paneling.html" aria-current="page">Paneling</a></li>
+              <li><a href="moldings.html">Moldings</a></li>
+              <li><a href="corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="shutters.html">Shutters</a></li>
+              <li><a href="storm-doors.html">Storm Doors</a></li>
+            </ul>
+          </li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </nav>
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- INTRO -->
+    <section class="project-intro" aria-labelledby="project-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow project-intro__eyebrow">Portfolio &mdash; Work</span>
+        <h1 id="project-heading" class="h1-display project-intro__heading">Paneling</h1>
+        <div class="project-intro__copy" data-reveal>
+          <p class="lead">Our paneling crafts a narrative of timeless aesthetics, seamlessly blending 18th-century charm with contemporary sophistication.</p>
+          <p>Each panel is a canvas where tradition meets modernity, enhancing the character of your interiors.</p>
+          <p>Explore our diverse paneling designs, each crafted to provide a distinct ambiance while honoring the rich heritage of woodworking, ensuring your spaces exude a warm, refined charm that stands the test of time.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1 — Knee Wall (5 photos, asymmetric grid) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-1-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">01</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">
+            Angled Back Cabinet for Knee Walls <em>in a Bonus Room</em>
+          </h2>
+        </header>
+
+        <div class="kneewall-grid" aria-label="Knee wall cabinet panel photos">
+          <!-- R1C1 -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-kneewall-01.jpg"
+                 alt="White painted knee-wall panel run installed, wide view from left"
+                 loading="lazy" decoding="async"
+                 data-caption="Knee Wall — full installed run, left view" />
+          </div>
+          <!-- R1C2 -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-kneewall-02.jpg"
+                 alt="White knee-wall panels installed, closer view showing raised panel detail"
+                 loading="lazy" decoding="async"
+                 data-caption="Knee Wall — raised panel detail" />
+          </div>
+          <!-- C3 tall — spans R1+R2 -->
+          <div class="photo-cell ga-c" >
+            <img class="gallery-img" src="../images/paneling/pan-kneewall-03.jpg"
+                 alt="Natural pine cabinet unit exterior, raw wood, before installation"
+                 loading="lazy" decoding="async"
+                 data-caption="Knee Wall — raw pine unit before install" />
+          </div>
+          <!-- R2C1 -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-kneewall-04.jpg"
+                 alt="White knee-wall panel run, full room width view, wood floor"
+                 loading="lazy" decoding="async"
+                 data-caption="Knee Wall — full room width view" />
+          </div>
+          <!-- R2C2 -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-kneewall-05.jpg"
+                 alt="White knee-wall panels, corner return detail, painted finish"
+                 loading="lazy" decoding="async"
+                 data-caption="Knee Wall — corner return detail" />
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECTION 2 — Variety Paneling (12 photos, 3-col with 2 tall spanning items) -->
+    <section class="project-gallery-section py-section section--raised-top"
+             
+             aria-labelledby="gallery-2-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center" >
+          <div class="section-badge u-jc-center" ><span class="section-badge__num">02</span> Portfolio Overview</div>
+          <div class="divider--accent u-mx-auto" ></div>
+          <h2 id="gallery-2-heading" class="h2-section project-gallery-title">
+            Variety <em>Paneling</em>
+          </h2>
+        </header>
+
+        <div class="variety-grid" aria-label="Overview of paneling projects over the years">
+
+          <!-- Row 1 — col 1 spans rows 1+2 -->
+          <div class="photo-cell span-2">
+            <img class="gallery-img" src="../images/paneling/pan-variety-01.jpg"
+                 alt="Period room with full-height arched window paneling, dark wood, winter trees outside"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — full-height arched window paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-02.jpg"
+                 alt="Colonial room with pink painted full-wall paneling and fireplace"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — pink painted full-wall paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-03.jpg"
+                 alt="Colonial room with dark red barn-red painted paneling and oil portrait on wall"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — dark red painted paneling" />
+          </div>
+
+          <!-- Row 2 — col 1 still spanned -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-04.jpg"
+                 alt="Grey painted wainscot paneling in period room with fireplace surround"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — grey wainscot paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-05.jpg"
+                 alt="Blue painted full-wall paneling with fireplace, colonial room with sofa"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — blue full-wall paneling" />
+          </div>
+
+          <!-- Row 3 — col 1 spans rows 3+4 -->
+          <div class="photo-cell span-2">
+            <img class="gallery-img" src="../images/paneling/pan-variety-06.jpg"
+                 alt="Dark wood full-height paneling in period interior with wide-plank floor"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — dark wood full-height paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-07.jpg"
+                 alt="Terracotta orange painted paneling with fireplace and period chair"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — terracotta painted paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-08.jpg"
+                 alt="White cream formal room with paneling, fireplace, and period furniture"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — white cream formal paneling" />
+          </div>
+
+          <!-- Row 4 — col 1 still spanned -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-09.jpg"
+                 alt="Blue-grey wainscot paneling with applied mouldings and fireplace"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — blue-grey wainscot paneling" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-10.jpg"
+                 alt="Natural pine panel cladding in attic or upper room, raw wood"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — natural pine panel cladding" />
+          </div>
+
+          <!-- Row 5 — last two, centred in col 2+3 -->
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-11.jpg"
+                 alt="Arched raised-panel chimney breast surround with ornamental woodwork"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — arched chimney breast surround" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/paneling/pan-variety-12.jpg"
+                 alt="Raised panel door with bolection moulding, natural pine, shop view"
+                 loading="lazy" decoding="async"
+                 data-caption="Variety — raised panel door with bolection moulding" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PAGINATION -->
+  <nav class="project-pagination" aria-label="Portfolio navigation">
+    <a href="entryways.html" class="project-pagination__prev">
+      <span class="project-pagination__arrow" aria-hidden="true">&lsaquo;</span>
+      <span class="project-pagination__label">Entryways</span>
+    </a>
+    <a href="cabinetry.html" class="project-pagination__next">
+      <span class="project-pagination__label">Cabinetry</span>
+      <span class="project-pagination__arrow" aria-hidden="true">&rsaquo;</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
+      </div>
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md" >Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="../cdn-cgi/l/email-protection#7b1909120f0f1e150c14141f0c14091012151c1814160b1a15023b1c161a121755181416"><span class="__cf_email__" data-cfemail="1d7f6f74696978736a7272796a726f7674737a7e72706d7c73645d7a707c7471337e7270">[email&#160;protected]</span></a></li>
+          <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md" >Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+    </div>
+  </footer>
+
+  <script src="../site.js" defer></script>
+</body>
+</html>

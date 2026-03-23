@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>About — Britten Woodworking</title>
+  <meta
+    name="description"
+    content="Michael Britten has been doing woodworking for over 30 years. After apprenticing under a German master craftsman, he launched Britten Woodworking in Connecticut."
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="About — Britten Woodworking" />
+  <meta property="og:description" content="30+ years of colonial woodworking. Apprenticed under a German master craftsman. Based in Connecticut." />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://www.brittenwoodworking.com/about" />
+
+  <link rel="canonical" href="https://www.brittenwoodworking.com/about" />
+
+  <!-- Favicons -->
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/profilepic.png" />
+  <link rel="icon"             href="favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <!-- Shared design system — one level up from /projects/ subpages -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ====================================================================
+       SITE HEADER / NAVIGATION
+       aria-current="page" on About link.
+       All internal links relative .html paths.
+  ===================================================================== -->
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+
+      <a href="index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img
+          src="Logo_BrandV2.png"
+          alt="Britten Woodworking — Hand-Crafted USA"
+          class="site-nav__logo-img"
+          width="99"
+          height="48"
+          fetchpriority="high"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+
+          <li><a href="about.html" aria-current="page">About</a></li>
+
+          <li class="site-nav__item--has-dropdown">
+            <a href="work.html" class="site-nav__dropdown-trigger"
+               aria-haspopup="true"
+               aria-expanded="false">
+              Work
+            </a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="projects/cabinetry.html">Cabinetry</a></li>
+              <li><a href="projects/entryways.html">Entryways</a></li>
+              <li><a href="projects/paneling.html">Paneling</a></li>
+              <li><a href="projects/moldings.html">Moldings</a></li>
+              <li><a href="projects/corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="projects/shutters.html">Shutters</a></li>
+              <li><a href="projects/storm-doors.html">Storm Doors</a></li>
+            </ul>
+          </li>
+
+          <li><a href="services.html">Services</a></li>
+          <li><a href="weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="contact.html">Contact</a></li>
+
+          <li>
+            <a href="https://linktr.ee/brittenwoodworking"
+               target="_blank"
+               rel="noopener noreferrer">
+              Leave a Review
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <a href="contact.html" class="btn btn-primary site-nav__cta">
+        Start a Commission
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- ====================================================================
+       MAIN CONTENT
+  ===================================================================== -->
+  <main id="main-content">
+
+
+    <!-- ------------------------------------------------------------------
+         ABOUT HERO — page title zone
+    ------------------------------------------------------------------- -->
+    <section class="about-hero" aria-labelledby="about-heading">
+      <div class="container">
+        <span class="eyebrow about-hero__eyebrow">
+          The Craftsman &mdash; Connecticut
+        </span>
+        <h1 id="about-heading" class="h2-section about-hero__heading">
+          Woodworking is<em>&hellip;</em>
+        </h1>
+      </div>
+    </section>
+
+
+    <!-- ------------------------------------------------------------------
+         ABOUT BODY — two-column layout
+         Text left, photo right. Corrects Squarespace's centered alignment.
+         Surfaces the German master craftsman credential (buried in meta tags
+         on the live site — now the second paragraph of the bio).
+    ------------------------------------------------------------------- -->
+    <section class="about-body" aria-label="Michael Britten biography">
+      <div class="container">
+
+        <div class="about-body__grid" data-reveal>
+
+          <!-- LEFT: bio copy + credential rail + CTAs -->
+          <div class="about-body__copy">
+
+            <p class="lead about-body__lead">
+              Woodworking is what I do, and what I have been doing
+              for over 30 years.
+            </p>
+
+            <p>
+              After apprenticing under a German master craftsman, I began
+              a journey that has taken me from learning traditional joinery
+              methods to launching my own business here in Connecticut.
+            </p>
+
+            <p>
+              I have experience building a number of different types of
+              items — cabinetry, entryways, paneling, moldings, corner
+              cupboards, shutters, and storm doors. Look through my photos
+              to see some of my projects. You will see an attention to
+              detail, knowledge of methods, and skill that can help make
+              your project ideas a reality.
+            </p>
+
+            <!-- Credential rail -->
+            <dl class="about-credentials" aria-label="Credentials">
+
+              <div class="about-credentials__item">
+                <dt class="about-credentials__label">Experience</dt>
+                <dd class="about-credentials__value">
+                  <span class="about-credentials__number">30</span>
+                  <span class="about-credentials__unit">+ yrs</span>
+                </dd>
+              </div>
+
+              <div class="about-credentials__item">
+                <dt class="about-credentials__label">Training</dt>
+                <dd class="about-credentials__value about-credentials__value--text">
+                  German Master
+                </dd>
+              </div>
+
+              <div class="about-credentials__item">
+                <dt class="about-credentials__label">Based In</dt>
+                <dd class="about-credentials__value about-credentials__value--text">
+                  Connecticut
+                </dd>
+              </div>
+
+            </dl>
+
+            <!-- CTAs -->
+            <div class="about-body__actions">
+              <a href="contact.html" class="btn btn-primary">
+                Start a Commission
+              </a>
+              <a href="work.html" class="btn btn-ghost">
+                View the Work
+              </a>
+            </div>
+
+          </div>
+          <!-- /left -->
+
+          <!-- RIGHT: profile photo with brass frame treatment -->
+          <figure class="about-body__photo-frame"
+                  aria-label="Michael Britten at work in his Connecticut woodworking shop">
+            <img
+              src="profilepic.png"
+              alt="Michael Britten working at his woodworking bench in his Connecticut shop"
+              class="about-body__photo"
+              width="2000"
+              height="1545"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+
+        </div>
+
+      </div>
+    </section>
+    <!-- /about-body -->
+
+
+    <!-- ------------------------------------------------------------------
+         CRAFT PHILOSOPHY QUOTE
+         Full-width typographic break. His own words, large Playfair italic.
+         Brass ornament dashes. No background image — pure typography.
+    ------------------------------------------------------------------- -->
+    <section class="about-quote" aria-label="Philosophy">
+      <div class="container container--narrow">
+        <div class="about-quote__inner">
+          <span class="about-quote__ornament" aria-hidden="true">&mdash;</span>
+          <blockquote class="about-quote__text">
+            <p>
+              You will see an attention to detail, knowledge of methods,
+              and skill displayed that can help you make your project
+              ideas a reality.
+            </p>
+            <footer class="about-quote__attribution">
+              <cite>Michael Britten</cite>
+            </footer>
+          </blockquote>
+          <span class="about-quote__ornament" aria-hidden="true">&mdash;</span>
+        </div>
+      </div>
+    </section>
+    <!-- /about-quote -->
+
+
+  </main>
+  <!-- /main -->
+
+
+  <!-- ====================================================================
+       SITE FOOTER
+  ===================================================================== -->
+  <footer class="site-footer" role="contentinfo" id="contact">
+    <div class="site-footer__inner">
+
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">
+          18th-century colonial craftsmanship.<br />
+          Handbuilt in Connecticut for over 30 years.
+        </p>
+      </div>
+
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md" >Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li>
+            <a href="mailto:michaelspikebritten@gmail.com">
+              michaelspikebritten@gmail.com
+            </a>
+          </li>
+          <li>
+            <a href="tel:+18607166994">(860) 716-6994</a>
+          </li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md" >Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li>
+            <a href="https://www.facebook.com/BrittenWoodworking/"
+               target="_blank" rel="noopener noreferrer">Facebook</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/brittenwoodworkingcompany/"
+               target="_blank" rel="noopener noreferrer">Instagram</a>
+          </li>
+          <li>
+            <a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a>
+          </li>
+        </ul>
+      </div>
+
+      <p class="site-footer__copy">
+        &copy; <time datetime="2026">2026</time> Britten Woodworking.
+        All rights reserved. Connecticut, USA.
+      </p>
+
+    </div>
+  </footer>
+  <!-- /footer -->
+
+  <script src="site.js" defer></script>
+</body>
+</html>

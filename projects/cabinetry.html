@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cabinetry — Britten Woodworking</title>
+  <meta name="description" content="Custom 18th-century reproduction cabinetry by Britten Woodworking. Antique wood pantry, wire beam cupboards, curved bar cabinets, and slant-front breakfronts. Connecticut." />
+  <link rel="canonical" href="https://www.brittenwoodworking.com/projects/cabinetry" />
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/cabinetry/cab-pantry-01.jpg" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Gallery image */
+    .gallery-img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      cursor:zoom-in;
+      transition: transform 0.4s cubic-bezier(0.25,0.1,0.25,1), filter 0.3s ease;
+    }
+    .gallery-img:hover { transform:scale(1.03); filter:brightness(1.05); }
+
+    /* Lightbox */
+    .lightbox {
+      display:none; position:fixed; inset:0; z-index:1000;
+      background:rgba(10,8,6,0.96);
+      align-items:center; justify-content:center; padding:1rem; cursor:zoom-out;
+    }
+    .lightbox.is-open { display:flex; }
+    .lightbox__inner {
+      position:relative; max-width:min(90vw,1100px); max-height:90vh;
+      display:flex; flex-direction:column; align-items:center; gap:1rem;
+    }
+    .lightbox__img { max-width:100%; max-height:82vh; object-fit:contain; display:block; border:1px solid rgba(184,134,78,0.25); }
+    .lightbox__caption { font-family:'Lora',serif; font-size:0.8rem; font-style:italic; color:#A89880; letter-spacing:0.06em; text-align:center; }
+    .lightbox__close {
+      position:fixed; top:1.25rem; right:1.5rem; background:none;
+      border:1px solid rgba(184,134,78,0.4); color:#B8864E;
+      font-size:1.5rem; line-height:1; width:2.5rem; height:2.5rem;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      transition:background 0.2s, color 0.2s;
+    }
+    .lightbox__close:hover { background:rgba(184,134,78,0.15); color:#F0EBE3; }
+    .lightbox__nav {
+      position:fixed; top:50%; transform:translateY(-50%);
+      background:rgba(23,20,16,0.7); border:1px solid rgba(184,134,78,0.3);
+      color:#B8864E; font-size:1.75rem; width:3rem; height:3rem;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      transition:background 0.2s, color 0.2s; z-index:1001;
+    }
+    .lightbox__nav:hover { background:rgba(184,134,78,0.2); color:#F0EBE3; }
+    .lightbox__prev { left:1rem; }
+    .lightbox__next { right:1rem; }
+    .lightbox__counter {
+      position:fixed; bottom:1.25rem; left:50%; transform:translateX(-50%);
+      font-family:'Lora',serif; font-size:0.75rem; font-style:italic;
+      color:#6B5E4E; letter-spacing:0.1em;
+    }
+
+    /* Missing image placeholder */
+    .img-missing {
+      width:100%; aspect-ratio:4/3;
+      background:repeating-linear-gradient(45deg,#1F1B17,#1F1B17 4px,#272119 4px,#272119 12px);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:0.5rem; border:1px dashed rgba(184,134,78,0.2);
+    }
+    .img-missing__label {
+      font-family:'Lora',serif; font-size:0.65rem; font-style:italic;
+      letter-spacing:0.08em; color:#6B5E4E; text-align:center; padding:0 0.75rem;
+    }
+
+    /* Section badge */
+    .section-badge {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      font-family:'Lora',serif; font-size:0.7rem; font-style:italic;
+      letter-spacing:0.12em; text-transform:uppercase; color:#6B5E4E; margin-bottom:0.5rem;
+    }
+    .section-badge__num {
+      font-family:'Playfair Display',serif; font-size:0.65rem; font-weight:700;
+      color:#B8864E; border:1px solid rgba(184,134,78,0.35); padding:0.1rem 0.4rem; letter-spacing:0.05em;
+    }
+
+    /* Photo cell clips hover scale */
+    .photo-cell { overflow:hidden; position:relative; }
+
+    /* Variety 5-col grid */
+    .variety-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--space-sm); }
+    @media(max-width:900px){ .variety-grid{ grid-template-columns:repeat(3,1fr); } }
+    @media(max-width:560px){ .variety-grid{ grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img src="../Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
+             class="site-nav__logo-img" width="99" height="48"
+             fetchpriority="high" loading="eager" decoding="async" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+          <li><a href="../about.html">About</a></li>
+          <li class="site-nav__item--has-dropdown">
+            <a href="../work.html" class="site-nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">Work</a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="cabinetry.html" aria-current="page">Cabinetry</a></li>
+              <li><a href="entryways.html">Entryways</a></li>
+              <li><a href="paneling.html">Paneling</a></li>
+              <li><a href="moldings.html">Moldings</a></li>
+              <li><a href="corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="shutters.html">Shutters</a></li>
+              <li><a href="storm-doors.html">Storm Doors</a></li>
+            </ul>
+          </li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </nav>
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- INTRO -->
+    <section class="project-intro" aria-labelledby="project-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow project-intro__eyebrow">Portfolio &mdash; Work</span>
+        <h1 id="project-heading" class="h1-display project-intro__heading">Cabinetry</h1>
+        <div class="project-intro__copy" data-reveal>
+          <p class="lead">Our cabinetry delivers unmatched artistry, fused with 18th-century colonial craftsmanship.</p>
+          <p>Each piece is a testament to timeless design, reflecting the elegance of hand-crafted furniture. Our mastery in creating intricate details and using naturally aged materials ensures each cabinet is a work of art that stands the test of time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1 — Antique Wood Pantry (4-col, 1 row) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-1-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">01</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">Antique Wood Pantry <em>Pump / Entry</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="pantry">
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-pantry-01.jpg" alt="Installed antique-finish wood pantry cabinets, full view" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — full installed view" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-pantry-02.jpg" alt="Pantry upper cabinets with raised panel doors" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — raised panel door detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-pantry-03.jpg" alt="Pantry corner — open shelving and closed lower cabinets" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — corner section" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-pantry-04.jpg" alt="Pantry base cabinets, antique stain, full width" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — base cabinets" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — Wire Beam Cupboards (5-col, 4 rows) -->
+    <section class="project-gallery-section py-section section--raised"
+             
+             aria-labelledby="gallery-2-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">02</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-2-heading" class="h2-section project-gallery-title">Wire Beam Cupboards <em>and Woodwork</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--5col" data-reveal="stagger" data-gallery="wirebeam">
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-01.jpg" alt="Wide flat-sawn boards in shop" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — lumber stock" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-02.jpg" alt="Arched cupboard door detail, raw pine" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — arched door detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-03.jpg" alt="Multiple frames in progress, shop floor" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — shop floor overview" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-04.jpg" alt="Arched raised-panel door, raw white pine" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — raised panel door" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-05.jpg" alt="Stacked cabinet carcasses awaiting assembly" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — carcass stack" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-06.jpg" alt="Long countertop with cabinet base, shop floor" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — countertop base" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-07.jpg" alt="Multiple arched-door cupboard frames assembled" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — frame assembly" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-08.jpg" alt="Cabinet back panels with beading detail" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — beadboard back panels" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-09.jpg" alt="Pair of arched cupboard doors leaned on wall" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — arched door pair" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-10.jpg" alt="Tall open-shelved bookcase, shop view" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — open shelved bookcase" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-11.jpg" alt="Corner cabinet unit with arched upper doors" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — corner unit" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-12.jpg" alt="Interior of arched cupboard, shelf detail" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — interior shelf detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-13.jpg" alt="Double-door cabinet with X-pattern lower panels" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — X-pattern lower panels" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-14.jpg" alt="Cabinet doors with cross-braced lower section" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — cross-braced doors" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-15.jpg" alt="Wide shop view, multiple pieces in progress" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — shop overview" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-16.jpg" alt="Completed upper cabinet with glazed arched door" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — completed glazed upper" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-17.jpg" alt="Drawer and face frame joinery close-up" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — joinery detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-18.jpg" alt="Raised panel doors, ogee profile detail" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — ogee profile" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-19.jpg" alt="Cabinet with fluted pilasters, shop assembly" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — fluted pilasters" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-wirebeam-20.jpg" alt="Full cupboard unit completed, natural finish" loading="lazy" decoding="async" data-caption="Wire Beam Cupboards — completed unit" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — Curved Bar Base Cabinet (4 early + video) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-3-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">03</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-3-heading" class="h2-section project-gallery-title">Curved Bar Base Cabinet <em>In Progress</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="curvedbar-early">
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-01.jpg" alt="Curved bar cabinet bending forms, shop floor" loading="lazy" decoding="async" data-caption="Curved Bar — bending forms" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-02.jpg" alt="Curved stave assembly for bar cabinet sides" loading="lazy" decoding="async" data-caption="Curved Bar — stave assembly" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-03.jpg" alt="Face frame routing, curved profile work" loading="lazy" decoding="async" data-caption="Curved Bar — face frame routing" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-04.jpg" alt="Curved bar cabinet early stage detail" loading="lazy" decoding="async" data-caption="Curved Bar — early stage detail" /></div>
+        </div>
+        <div class="project-video-slot u-mt-2xl"  aria-label="Video: Introduction to Tombstone Panel Fitting">
+          <div class="project-video-placeholder img-placeholder">
+            <span>VIDEO: An Introduction to Tombstone Panel Fitting<br />cab-tombstone-panel-fitting.mp4</span>
+          </div>
+          <p class="project-video-caption">An introduction to Tombstone Panel Fitting</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 — Curved Bar Cabinet Full Build (7 confirmed + 1 missing) -->
+    <section class="project-gallery-section py-section section--raised"
+             
+             aria-labelledby="gallery-4-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">04</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-4-heading" class="h2-section project-gallery-title">Curved Bar Cabinet <em>Full Build</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="curvedbar">
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-01.jpg" alt="Curved bar cabinet side panels, bending lamination" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — side panels" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-02.jpg" alt="Cabinet top curved profile, shop routing" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — top profile" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-03.jpg" alt="Interior curved shelving, dry-fit stage" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — interior shelving" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-04.jpg" alt="Curved stave assembly from above" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — stave assembly overhead" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-05.jpg" alt="Curved front face frame fitted" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — face frame" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-06.jpg" alt="Close-up of curved door and hinge mortise" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — door and hinge detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-07.jpg" alt="Assembled pre-finish, 3/4 angle" loading="lazy" decoding="async" data-caption="Curved Bar Full Build — assembled pre-finish" /></div>
+</div>
+      </div>
+    </section>
+
+    <!-- SECTION 5 — Finished (2 photos) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-5-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">05</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-5-heading" class="h2-section project-gallery-title"><em>Finished</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--2col" data-reveal="stagger" data-gallery="finished">
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-finished-01.jpg" alt="Finished cabinet installed, room view" loading="lazy" decoding="async" data-caption="Finished — installed room view" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-finished-02.jpg" alt="Finished curved bar cabinet door and hardware detail" loading="lazy" decoding="async" data-caption="Finished — door and hardware detail" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6 — Slant Front Breakfront -->
+    <section class="project-gallery-section py-section section--raised"
+             
+             aria-labelledby="gallery-6-heading">
+      <div class="container">
+        <div class="project-feature-layout" aria-labelledby="gallery-6-heading">
+          <div class="project-feature-copy">
+            <div class="section-badge"><span class="section-badge__num">06</span> Series</div>
+            <div class="divider--accent"></div>
+            <h2 id="gallery-6-heading" class="h2-section project-gallery-title">18th Century Reproduction <em>Slant Front Breakfront</em></h2>
+            <p>Meticulously reproduced from historical originals, this slant-front breakfront captures the proportions and joinery character of authentic 18th-century furniture. Hand-cut dovetail carcass construction, period-accurate moulding profiles, and solid primary woods throughout — no veneers, no shortcuts.</p>
+          </div>
+          <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger" data-gallery="breakfront">
+            <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-breakfront-01.jpg" alt="Slant-front breakfront, raw assembly in shop, full front view" loading="lazy" decoding="async" data-caption="Slant Front Breakfront — full assembly" /></div>
+            <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-breakfront-02.jpg" alt="Breakfront upper bookcase with glazed doors" loading="lazy" decoding="async" data-caption="Slant Front Breakfront — upper glazed section" /></div>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 — Variety (5-col, 2 rows) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-7-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center" >
+          <div class="section-badge u-jc-center" ><span class="section-badge__num">07</span> Portfolio Overview</div>
+          <div class="divider--accent u-mx-auto" ></div>
+          <h2 id="gallery-7-heading" class="h2-section project-gallery-title">Variety of Cabinetry <em>Worked On Over The Years</em></h2>
+        </header>
+        <div class="variety-grid" data-gallery="variety">
+<div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-02.JPG" alt="Long white raised-panel bar counter with black top, installed in wine store" loading="lazy" decoding="async" data-caption="Variety — wine store bar counter" /></div>
+
+<div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-05.jpg" alt="Dark red corner base cabinet run with drawers and raised panel doors" loading="lazy" decoding="async" data-caption="Variety — dark red corner base cabinet" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-06.jpg" alt="Dark red full hutch with upper glazed doors and lower drawers" loading="lazy" decoding="async" data-caption="Variety — dark red full hutch" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-07.jpg" alt="Large glazed display cabinet, natural wood, installed in room" loading="lazy" decoding="async" data-caption="Variety — glazed display cabinet" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-08.jpg" alt="Full cream kitchen cabinet installation, upper and lower runs" loading="lazy" decoding="async" data-caption="Variety — full kitchen install, cream finish" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-09.jpg" alt="Cream pantry armoire with drawers, installed in period kitchen" loading="lazy" decoding="async" data-caption="Variety — pantry armoire, period kitchen" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-10.jpg" alt="Dark red full kitchen cabinet wall with open shelving and butcher block island" loading="lazy" decoding="async" data-caption="Variety — dark red kitchen wall" /></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PAGINATION -->
+  <nav class="project-pagination" aria-label="Portfolio navigation">
+    <a href="paneling.html" class="project-pagination__prev">
+      <span class="project-pagination__arrow" aria-hidden="true">&lsaquo;</span>
+      <span class="project-pagination__label">Paneling</span>
+    </a>
+    <a href="shutters.html" class="project-pagination__next">
+      <span class="project-pagination__label">Shutters</span>
+      <span class="project-pagination__arrow" aria-hidden="true">&rsaquo;</span>
+    </a>
+  </nav>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
+      </div>
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md" >Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="../cdn-cgi/l/email-protection#d1b3a3b8a5a5b4bfa6bebeb5a6bea3bab8bfb6b2bebca1b0bfa891b6bcb0b8bdffb2bebc"><span class="__cf_email__" data-cfemail="e88a9a819c9c8d869f87878c9f879a8381868f8b878598898691a88f85898184c68b8785">[email&#160;protected]</span></a></li>
+          <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md" >Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+    </div>
+  </footer>
+
+  <script src="../site.js" defer></script>
+</body>
+</html>
