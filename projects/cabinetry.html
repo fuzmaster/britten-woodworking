@@ -87,9 +87,8 @@
     .photo-cell { overflow:hidden; position:relative; }
 
     /* Variety 5-col grid */
-    .variety-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:var(--space-sm); }
-    @media(max-width:900px){ .variety-grid{ grid-template-columns:repeat(3,1fr); } }
-    @media(max-width:560px){ .variety-grid{ grid-template-columns:repeat(2,1fr); } }
+    .variety-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--space-sm); }
+    @media(max-width:700px){ .variety-grid{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -115,6 +114,7 @@
               <li><a href="corner-cabinetry.html">Corner Cabinetry</a></li>
               <li><a href="shutters.html">Shutters</a></li>
               <li><a href="storm-doors.html">Storm Doors</a></li>
+              <li><a href="stairway.html">Stairway</a></li>
             </ul>
           </li>
           <li><a href="../services.html">Services</a></li>
@@ -129,7 +129,7 @@
           <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
         </svg>
       </button>
-      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Project</a>
     </div>
   </header>
 
@@ -199,36 +199,13 @@
       </div>
     </section>
 
-    <!-- SECTION 3 — Curved Bar Base Cabinet (4 early + video) -->
-    <section class="project-gallery-section py-section" aria-labelledby="gallery-3-heading">
-      <div class="container">
-        <header class="project-gallery-header">
-          <div class="section-badge"><span class="section-badge__num">03</span> Series</div>
-          <div class="divider--accent"></div>
-          <h2 id="gallery-3-heading" class="h2-section project-gallery-title">Curved Bar Base Cabinet <em>In Progress</em></h2>
-        </header>
-        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="curvedbar-early">
-          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-01.jpg" alt="Curved bar cabinet bending forms, shop floor" loading="lazy" decoding="async" data-caption="Curved Bar — bending forms" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-02.jpg" alt="Curved stave assembly for bar cabinet sides" loading="lazy" decoding="async" data-caption="Curved Bar — stave assembly" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-03.jpg" alt="Face frame routing, curved profile work" loading="lazy" decoding="async" data-caption="Curved Bar — face frame routing" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-curvedbar-early-04.jpg" alt="Curved bar cabinet early stage detail" loading="lazy" decoding="async" data-caption="Curved Bar — early stage detail" /></div>
-        </div>
-        <div class="project-video-slot u-mt-2xl"  aria-label="Video: Introduction to Tombstone Panel Fitting">
-          <div class="project-video-placeholder img-placeholder">
-            <span>VIDEO: An Introduction to Tombstone Panel Fitting<br />cab-tombstone-panel-fitting.mp4</span>
-          </div>
-          <p class="project-video-caption">An introduction to Tombstone Panel Fitting</p>
-        </div>
-      </div>
-    </section>
-
     <!-- SECTION 4 — Curved Bar Cabinet Full Build (7 confirmed + 1 missing) -->
     <section class="project-gallery-section py-section section--raised"
              
              aria-labelledby="gallery-4-heading">
       <div class="container">
         <header class="project-gallery-header">
-          <div class="section-badge"><span class="section-badge__num">04</span> Series</div>
+          <div class="section-badge"><span class="section-badge__num">03</span> Series</div>
           <div class="divider--accent"></div>
           <h2 id="gallery-4-heading" class="h2-section project-gallery-title">Curved Bar Cabinet <em>Full Build</em></h2>
         </header>
@@ -248,7 +225,7 @@
     <section class="project-gallery-section py-section" aria-labelledby="gallery-5-heading">
       <div class="container">
         <header class="project-gallery-header">
-          <div class="section-badge"><span class="section-badge__num">05</span> Series</div>
+          <div class="section-badge"><span class="section-badge__num">04</span> Series</div>
           <div class="divider--accent"></div>
           <h2 id="gallery-5-heading" class="h2-section project-gallery-title"><em>Finished</em></h2>
         </header>
@@ -264,26 +241,32 @@
              
              aria-labelledby="gallery-6-heading">
       <div class="container">
-        <div class="project-feature-layout" aria-labelledby="gallery-6-heading">
-          <div class="project-feature-copy">
-            <div class="section-badge"><span class="section-badge__num">06</span> Series</div>
-            <div class="divider--accent"></div>
-            <h2 id="gallery-6-heading" class="h2-section project-gallery-title">18th Century Reproduction <em>Slant Front Breakfront</em></h2>
-            <p>Meticulously reproduced from historical originals, this slant-front breakfront captures the proportions and joinery character of authentic 18th-century furniture. Hand-cut dovetail carcass construction, period-accurate moulding profiles, and solid primary woods throughout — no veneers, no shortcuts.</p>
-          </div>
-          <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger" data-gallery="breakfront">
-            <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-breakfront-01.jpg" alt="Slant-front breakfront, raw assembly in shop, full front view" loading="lazy" decoding="async" data-caption="Slant Front Breakfront — full assembly" /></div>
-            <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-breakfront-02.jpg" alt="Breakfront upper bookcase with glazed doors" loading="lazy" decoding="async" data-caption="Slant Front Breakfront — upper glazed section" /></div>
-</div>
+        <div class="project-gallery-header u-center" >
+          <div class="section-badge u-jc-center" ><span class="section-badge__num">05</span> Series</div>
+          <div class="divider--accent u-mx-auto" ></div>
+          <h2 id="gallery-6-heading" class="h2-section project-gallery-title">18th Century Reproduction <em>Slant Front Breakfront</em></h2>
+          <p class="lead">Meticulously reproduced from historical originals. Hand-cut dovetail carcass construction, period-accurate moulding profiles, and solid primary woods throughout — no veneers, no shortcuts.</p>
         </div>
-      </div>
-    </section>
+        <div class="project-photo-grid project-photo-grid--2col" aria-label="Slant Front Breakfront photos">
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/cabinetry/cab-breakfront-01.jpg"
+                 alt="Slant front breakfront — exterior cabinet view showing period proportions"
+                 loading="lazy" decoding="async"
+                 data-caption="Slant Front Breakfront — exterior view" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/cabinetry/cab-breakfront-02.jpg"
+                 alt="Slant front breakfront — detail of hand-cut joinery and moulding profiles"
+                 loading="lazy" decoding="async"
+                 data-caption="Slant Front Breakfront — joinery detail" />
+          </div>
+        </div></section>
 
     <!-- SECTION 7 — Variety (5-col, 2 rows) -->
     <section class="project-gallery-section py-section" aria-labelledby="gallery-7-heading">
       <div class="container">
         <header class="project-gallery-header u-center" >
-          <div class="section-badge u-jc-center" ><span class="section-badge__num">07</span> Portfolio Overview</div>
+          <div class="section-badge u-jc-center" ><span class="section-badge__num">06</span> Portfolio Overview</div>
           <div class="divider--accent u-mx-auto" ></div>
           <h2 id="gallery-7-heading" class="h2-section project-gallery-title">Variety of Cabinetry <em>Worked On Over The Years</em></h2>
         </header>
@@ -296,6 +279,16 @@
           <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-08.jpg" alt="Full cream kitchen cabinet installation, upper and lower runs" loading="lazy" decoding="async" data-caption="Variety — full kitchen install, cream finish" /></div>
           <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-09.jpg" alt="Cream pantry armoire with drawers, installed in period kitchen" loading="lazy" decoding="async" data-caption="Variety — pantry armoire, period kitchen" /></div>
           <div class="photo-cell"><img class="gallery-img" src="../images/cabinetry/cab-variety-10.jpg" alt="Dark red full kitchen cabinet wall with open shelving and butcher block island" loading="lazy" decoding="async" data-caption="Variety — dark red kitchen wall" /></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-cta py-section" aria-labelledby="project-cta-heading">
+      <div class="container container--narrow">
+        <div class="project-cta__box">
+          <h2 id="project-cta-heading" class="project-cta__heading">Planning a <em>Similar Project</em>?</h2>
+          <p class="project-cta__copy">Share your scope, style, and timeline, and we’ll help you plan a custom build that fits your space.</p>
+          <a href="../contact.html#contact-form-heading" class="btn btn-primary">Request a Quote</a>
         </div>
       </div>
     </section>
@@ -323,7 +316,7 @@
       <div class="site-footer__contact">
         <span class="eyebrow u-mb-md" >Get in Touch</span>
         <ul role="list" class="site-footer__contact-list">
-          <li><a href="../cdn-cgi/l/email-protection#d1b3a3b8a5a5b4bfa6bebeb5a6bea3bab8bfb6b2bebca1b0bfa891b6bcb0b8bdffb2bebc"><span class="__cf_email__" data-cfemail="e88a9a819c9c8d869f87878c9f879a8381868f8b878598898691a88f85898184c68b8785">[email&#160;protected]</span></a></li>
+          <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
           <li><a href="tel:+18607166994">(860) 716-6994</a></li>
           <li class="site-footer__location">Connecticut, USA</li>
         </ul>

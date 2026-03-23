@@ -33,9 +33,22 @@
     /* Missing placeholder */
     .img-missing{width:100%;aspect-ratio:4/3;background:repeating-linear-gradient(45deg,#1F1B17,#1F1B17 4px,#272119 4px,#272119 12px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;border:1px dashed rgba(184,134,78,0.2);}
     .img-missing__label{font-family:'Lora',serif;font-size:0.65rem;font-style:italic;letter-spacing:0.08em;color:#6B5E4E;text-align:center;padding:0 0.75rem;}
+    .storm-layout{display:grid;gap:var(--space-sm);}
+    .storm-layout__hero .photo-cell{aspect-ratio:16/9;}
+    .storm-layout__support{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-sm);}
+    .storm-layout__support .photo-cell{aspect-ratio:4/5;}
+    @media(max-width:900px){
+      .storm-layout__support{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:640px){
+      .storm-layout__support{grid-template-columns:1fr;}
+      .storm-layout__hero .photo-cell,
+      .storm-layout__support .photo-cell{aspect-ratio:4/3;}
+    }
   </style>
 </head>
 <body>
+
   <header class="site-nav" role="banner">
     <div class="site-nav__inner">
       <a href="../index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
@@ -54,6 +67,7 @@
               <li><a href="corner-cabinetry.html">Corner Cabinetry</a></li>
               <li><a href="shutters.html">Shutters</a></li>
               <li><a href="storm-doors.html" aria-current="page">Storm Doors</a></li>
+              <li><a href="stairway.html">Stairway</a></li>
             </ul>
           </li>
           <li><a href="../services.html">Services</a></li>
@@ -68,7 +82,7 @@
           <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
         </svg>
       </button>
-      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Project</a>
     </div>
   </header>
 
@@ -80,58 +94,112 @@
         <span class="eyebrow project-intro__eyebrow">Portfolio &mdash; Work</span>
         <h1 id="project-heading" class="h1-display project-intro__heading">Storm Doors</h1>
         <div class="project-intro__copy" data-reveal>
-          <p class="lead">Our expert craftsmen use traditional techniques and carefully selected materials to create pieces that seamlessly blend with the original design of your home.</p>
-          <p>Whether you're looking to replace an existing storm door or add a new one, we can help.</p>
-          <p>With our attention to detail and commitment to using only the highest quality materials and techniques, you can be sure that your custom storm door will be both beautiful and practical.</p>
+          <p class="lead">Traditional techniques and carefully selected materials — each storm door is built to match the original design of your home.</p>
+          <p>Whether you need a replacement or a new installation, the work uses the same joinery methods and hardware profiles found on 18th-century Connecticut homes.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 1 — Hero: one confirmed image, centred wide -->
-    <section class="project-gallery-section py-section" aria-label="Storm door installed photos">
+    <!-- SECTION 1 — Installed Examples (2-col hero) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-1-heading">
       <div class="container">
-        <div class="u-mw-680" >
-          <div class="photo-cell u-aspect-3-4" >
-            <img class="gallery-img"
-                 src="../images/card-storm-doors-exterior.jpg"
-                 alt="Dark stained board-and-batten storm door with triangular pediment surround on white colonial home"
-                 loading="lazy" decoding="async"
-                 data-caption="Storm Door — triangular pediment entryway, installed" />
+        <header class="project-gallery-header u-center">
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">Installed <em>Examples</em></h2>
+        </header>
+        <div class="storm-layout" data-reveal="stagger">
+          <div class="storm-layout__hero">
+            <div class="photo-cell">
+              <img class="gallery-img" src="../images/storm-doors/sd-installed-wide.jpg"
+                   alt="Wide exterior view of white colonial home 909 with completed storm door installation and brick walkway"
+                   loading="lazy" decoding="async"
+                   data-caption="Installed — white colonial home exterior, 909" />
+            </div>
+          </div>
+          <div class="storm-layout__support">
+            <div class="photo-cell">
+              <img class="gallery-img" src="../images/storm-doors/sd-installed-close.jpg"
+                   alt="Storm door installed in triangular pediment entryway surround on white colonial exterior, house number 909"
+                   loading="lazy" decoding="async"
+                   data-caption="Installed — pediment entryway close-up" />
+            </div>
+            <div class="photo-cell">
+              <img class="gallery-img" src="../images/storm-doors/sd-door-front.jpg"
+                   alt="Dark stained board-and-batten storm door close-up showing black strap hinges and period iron latch"
+                   loading="eager" decoding="async"
+                   data-caption="Board-and-batten storm door — black strap hinges, iron latch" />
+            </div>
+            <div class="photo-cell">
+              <img class="gallery-img" src="../images/storm-doors/sd-door-open.jpg"
+                   alt="Storm door open outward from interior threshold looking out to brick path and spring lawn"
+                   loading="lazy" decoding="async"
+                   data-caption="Installed — view from interior threshold" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2 — Process of Production (placeholders, photos coming) -->
-    <section class="project-gallery-section py-section section--raised-top"
-             
-             aria-labelledby="gallery-2-heading">
+    <!-- SECTION 2 — Interior View -->
+    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-2-heading">
       <div class="container">
-        <header class="project-gallery-header u-center" >
-          <div class="divider--accent u-mx-auto" ></div>
-          <h2 id="gallery-2-heading" class="h2-section project-gallery-title">
-            Process of <em>Production</em>
-          </h2>
+        <header class="project-gallery-header u-center">
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-2-heading" class="h2-section project-gallery-title">Interior <em>Install</em></h2>
         </header>
-        <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger" aria-label="Storm door fabrication process photos">
+        <div style="max-width:680px;margin-inline:auto;">
+          <div class="photo-cell" style="aspect-ratio:3/4;">
+            <img class="gallery-img" src="../images/storm-doors/sd-interior-open.jpg"
+                 alt="Installed storm door open from interior showing entryway hall with period lantern overhead and colored glass transom"
+                 loading="lazy" decoding="async"
+                 data-caption="Interior install — storm door open, period lantern overhead" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-
-
-
-
-</div>
+    <!-- SECTION 3 — Process of Production -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-3-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center">
+          <div class="section-badge u-jc-center"><span class="section-badge__num">03</span> Fabrication</div>
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-3-heading" class="h2-section project-gallery-title">Process of <em>Production</em></h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger">
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/storm-doors/sd-raw-lumber.jpg"
+                 alt="Raw pine boards planed smooth on long workbench during storm door fabrication"
+                 loading="lazy" decoding="async"
+                 data-caption="Process — pine boards planed and prepared" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/storm-doors/sd-process-nails.jpg"
+                 alt="Storm door panels laid flat on workbench with cut nails in a bucket during assembly"
+                 loading="lazy" decoding="async"
+                 data-caption="Process — panel assembly with cut nails" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img" src="../images/storm-doors/sd-hardware.jpg"
+                 alt="Period-style black cast iron door handle, hinge plates, and hardware components laid out on stone step"
+                 loading="lazy" decoding="async"
+                 data-caption="Process — period cast iron hardware" />
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Storm Doors is last in sequence — prev only -->
   <nav class="project-pagination" aria-label="Portfolio navigation">
     <a href="shutters.html" class="project-pagination__prev">
       <span class="project-pagination__arrow" aria-hidden="true">&lsaquo;</span>
       <span class="project-pagination__label">Shutters</span>
     </a>
-    <span></span>
+    <a href="stairway.html" class="project-pagination__next">
+      <span class="project-pagination__label">Stairway</span>
+      <span class="project-pagination__arrow" aria-hidden="true">&rsaquo;</span>
+    </a>
   </nav>
 
   <footer class="site-footer" role="contentinfo">
@@ -141,15 +209,15 @@
         <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
       </div>
       <div class="site-footer__contact">
-        <span class="eyebrow u-mb-md" >Get in Touch</span>
+        <span class="eyebrow u-mb-md">Get in Touch</span>
         <ul role="list" class="site-footer__contact-list">
-          <li><a href="../cdn-cgi/l/email-protection#9af8e8f3eeeefff4edf5f5feedf5e8f1f3f4fdf9f5f7eafbf4e3dafdf7fbf3f6b4f9f5f7"><span class="__cf_email__" data-cfemail="4a2838233e3e2f243d25252e3d25382123242d2925273a2b24330a2d272b232664292527">[email&#160;protected]</span></a></li>
+          <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
           <li><a href="tel:+18607166994">(860) 716-6994</a></li>
           <li class="site-footer__location">Connecticut, USA</li>
         </ul>
       </div>
       <div class="site-footer__links-block">
-        <span class="eyebrow u-mb-md" >Follow &amp; Review</span>
+        <span class="eyebrow u-mb-md">Follow &amp; Review</span>
         <ul role="list" class="site-footer__contact-list">
           <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
@@ -161,5 +229,6 @@
   </footer>
 
   <script src="../site.js" defer></script>
+
 </body>
 </html>

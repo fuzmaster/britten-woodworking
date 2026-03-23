@@ -650,7 +650,8 @@ a:not([class]):hover {
   height:     12px;
 }
 
-/* Reveal on hover — CSS only until JS phase */
+/* Reveal on hover/focus and JS-managed open state */
+.site-nav__item--has-dropdown.is-open .site-nav__dropdown,
 .site-nav__item--has-dropdown:hover .site-nav__dropdown,
 .site-nav__item--has-dropdown:focus-within .site-nav__dropdown {
   display: block;
@@ -671,6 +672,16 @@ a:not([class]):hover {
     color            var(--duration-fast) var(--ease-out),
     background-color var(--duration-fast) var(--ease-out);
   white-space:     nowrap;
+}
+
+.site-nav__dropdown li a::after,
+.site-nav__dropdown-trigger::before {
+  content: none;
+}
+
+.site-nav__dropdown li a:hover::after,
+.site-nav__dropdown li a[aria-current="page"]::after {
+  width: 0;
 }
 
 .site-nav__dropdown li a:hover {
@@ -696,7 +707,9 @@ a:not([class]):hover {
   transition:   transform var(--duration-fast) var(--ease-out);
 }
 
-.site-nav__item--has-dropdown:hover .site-nav__dropdown-trigger::after {
+.site-nav__item--has-dropdown.is-open .site-nav__dropdown-trigger::after,
+.site-nav__item--has-dropdown:hover .site-nav__dropdown-trigger::after,
+.site-nav__item--has-dropdown:focus-within .site-nav__dropdown-trigger::after {
   transform: rotate(-135deg) translateY(-2px);
 }
 
@@ -2003,7 +2016,8 @@ details[open] .ws-step__icon::after {
 }
 
 .contact-form__input,
-.contact-form__textarea {
+.contact-form__textarea,
+.contact-form__select {
   width:            100%;
   background-color: var(--color-bg-subtle);
   border:           1px solid var(--color-border);
@@ -2023,10 +2037,16 @@ details[open] .ws-step__icon::after {
   line-height: var(--leading-body);
 }
 
+.contact-form__select {
+  min-height: auto;
+  resize: none;
+}
+
 
 
 .contact-form__input:focus,
-.contact-form__textarea:focus {
+.contact-form__textarea:focus,
+.contact-form__select:focus {
   outline:          none;
   border-color:     var(--color-accent);
   background-color: var(--color-bg-raised);
@@ -2072,6 +2092,38 @@ details[open] .ws-step__icon::after {
 
 .project-intro__copy .lead {
   max-width: none;
+}
+
+.project-cta {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.project-cta__box {
+  border: 1px solid var(--color-border-accent);
+  background: var(--color-bg-raised);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.project-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.project-cta__heading em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.project-cta__copy {
+  max-width: 52ch;
+  color: var(--color-text-secondary);
 }
 
 

@@ -19,6 +19,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Custom Woodworking Services",
+    "serviceType": [
+      "Custom Cabinetry",
+      "Millwork",
+      "Paneling",
+      "Moldings",
+      "Shutters",
+      "Storm Doors",
+      "Weatherstrip Installation"
+    ],
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Britten Woodworking",
+      "url": "https://www.brittenwoodworking.com",
+      "telephone": "+1-860-716-6994",
+      "areaServed": "Connecticut"
+    },
+    "url": "https://www.brittenwoodworking.com/services"
+  }
+  </script>
 </head>
 
 <body>
@@ -43,6 +67,7 @@
               <li><a href="projects/corner-cabinetry.html">Corner Cabinetry</a></li>
               <li><a href="projects/shutters.html">Shutters</a></li>
               <li><a href="projects/storm-doors.html">Storm Doors</a></li>
+              <li><a href="projects/stairway.html">Stairway</a></li>
             </ul>
           </li>
           <li><a href="services.html" aria-current="page">Services</a></li>
@@ -57,7 +82,7 @@
           <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
         </svg>
       </button>
-      <a href="contact.html" class="btn btn-primary site-nav__cta">Start a Commission</a>
+      <a href="contact.html" class="btn btn-primary site-nav__cta">Start a Project</a>
     </div>
   </header>
 
@@ -169,13 +194,13 @@
 
           <div class="services-contact__copy">
             <h2 id="services-contact-heading" class="h2-section">Contact <em>Me</em></h2>
-            <p class="lead" class="u-mt-xl u-mb-lg">
+            <p class="lead u-mt-xl u-mb-lg">
               Looking for expert craftsmanship in 18th-century woodworking?
               Fill out our contact form for a quote or inquiry about your
               upcoming project. You can also reach us through Facebook or
               direct message us with any questions you may have.
             </p>
-            <ul role="list" class="site-footer__contact-list" class="u-mb-xl">
+            <ul role="list" class="site-footer__contact-list u-mb-xl">
               <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
               <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook: BrittenWoodworking</a></li>
             </ul>
@@ -197,6 +222,12 @@
               <div class="contact-form__field">
                 <label for="svc-email" class="contact-form__label">Email <span aria-hidden="true">*</span></label>
                 <input type="email" id="svc-email" name="email" class="contact-form__input" required autocomplete="email" />
+              </div>
+              <div class="contact-form__row contact-form__row--two-col">
+                <div class="contact-form__field">
+                  <label for="svc-phone" class="contact-form__label">Phone</label>
+                  <input type="tel" id="svc-phone" name="phone" class="contact-form__input" autocomplete="tel" />
+                </div>
               </div>
               <div class="contact-form__field">
                 <label for="svc-message" class="contact-form__label">Message <span aria-hidden="true">*</span></label>
@@ -220,7 +251,7 @@
         <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
       </div>
       <div class="site-footer__contact">
-        <span class="eyebrow" class="u-mb-md">Get in Touch</span>
+        <span class="eyebrow u-mb-md">Get in Touch</span>
         <ul role="list" class="site-footer__contact-list">
           <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
           <li><a href="tel:+18607166994">(860) 716-6994</a></li>
@@ -228,7 +259,7 @@
         </ul>
       </div>
       <div class="site-footer__links-block">
-        <span class="eyebrow" class="u-mb-md">Follow &amp; Review</span>
+        <span class="eyebrow u-mb-md">Follow &amp; Review</span>
         <ul role="list" class="site-footer__contact-list">
           <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>

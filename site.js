@@ -60,18 +60,34 @@
     document.body.appendChild(overlay);
 
     // Wire up Work dropdown accordion inside overlay
+    var dropdownItem    = overlay.querySelector('.site-nav__item--has-dropdown');
     var dropdownTrigger = overlay.querySelector('.site-nav__dropdown-trigger');
     var dropdownPanel   = overlay.querySelector('.site-nav__dropdown');
 
+    function setMobileDropdown(open) {
+      if (!dropdownTrigger || !dropdownPanel || !dropdownItem) return;
+      dropdownItem.classList.toggle('is-open', open);
+      dropdownPanel.hidden = !open;
+      dropdownTrigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
     if (dropdownTrigger && dropdownPanel) {
-      dropdownPanel.style.display = 'none';
-      dropdownTrigger.setAttribute('aria-expanded', 'false');
+      dropdownTrigger.setAttribute('aria-haspopup', 'true');
+      setMobileDropdown(false);
 
       dropdownTrigger.addEventListener('click', function (e) {
         e.preventDefault();
-        var isOpen = dropdownPanel.style.display !== 'none';
-        dropdownPanel.style.display = isOpen ? 'none' : 'block';
-        dropdownTrigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+        setMobileDropdown(dropdownPanel.hidden);
+      });
+
+      dropdownTrigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setMobileDropdown(dropdownPanel.hidden);
+        }
+        if (e.key === 'Escape') {
+          setMobileDropdown(false);
+        }
       });
     }
 
@@ -100,10 +116,6 @@
       burger.setAttribute('aria-expanded', 'true');
       burger.classList.add('is-active');
       document.body.style.overflow = 'hidden';
-      // Shift burger lines to X
-      var lines = $$('.site-nav__burger-top, .site-nav__burger-bottom', burger);
-      if (lines[0]) lines[0].style.transform = 'translateY(6px) rotate(45deg)';
-      if (lines[1]) lines[1].style.transform = 'translateY(-6px) rotate(-45deg)';
       // Focus first link
       setTimeout(function () {
         var firstLink = firstFocusable || overlay.querySelector('a, button');
@@ -119,11 +131,9 @@
       burger.setAttribute('aria-expanded', 'false');
       burger.classList.remove('is-active');
       document.body.style.overflow = '';
-      var lines = $$('.site-nav__burger-top, .site-nav__burger-bottom', burger);
-      if (lines[0]) lines[0].style.transform = '';
-      if (lines[1]) lines[1].style.transform = '';
       firstFocusable = null;
       lastFocusable = null;
+      setMobileDropdown(false);
       burger.focus();
     }
 
@@ -145,6 +155,7 @@
 
     // Close when a nav link is clicked
     overlay.querySelectorAll('a').forEach(function (a) {
+      if (a === dropdownTrigger) return;
       a.addEventListener('click', closeNav);
     });
   }
@@ -159,37 +170,95 @@
   function initDesktopDropdown() {
     var items = $$('.site-nav__item--has-dropdown');
 
+    function isTouchMode() {
+      return window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    }
+
+    function close(item) {
+      var trigger = item.querySelector('.site-nav__dropdown-trigger');
+      if (!trigger) return;
+      item.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function closeAll(exceptItem) {
+      items.forEach(function (item) {
+        if (item !== exceptItem) close(item);
+      });
+    }
+
+    function open(item) {
+      var trigger = item.querySelector('.site-nav__dropdown-trigger');
+      if (!trigger) return;
+      closeAll(item);
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+
     items.forEach(function (item) {
       var trigger = item.querySelector('.site-nav__dropdown-trigger');
       var panel   = item.querySelector('.site-nav__dropdown');
+      var links;
+
       if (!trigger || !panel) return;
 
-      function open() {
-        trigger.setAttribute('aria-expanded', 'true');
-        panel.style.display = 'block';
-      }
-      function close() {
-        trigger.setAttribute('aria-expanded', 'false');
-        panel.style.display = '';
-      }
+      links = $$('a', panel);
+      trigger.setAttribute('aria-haspopup', 'true');
+      trigger.setAttribute('aria-expanded', 'false');
 
-      // Mouse — CSS handles it, but keep aria in sync
-      item.addEventListener('mouseenter', open);
-      item.addEventListener('mouseleave', close);
-
-      // Keyboard — Enter/Space on trigger
-      trigger.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
-          isOpen ? close() : open();
-        }
-        if (e.key === 'Escape') close();
+      item.addEventListener('mouseenter', function () {
+        if (!isTouchMode()) open(item);
       });
 
-      // Close when focus leaves the item entirely
+      item.addEventListener('mouseleave', function () {
+        if (!isTouchMode()) close(item);
+      });
+
+      trigger.addEventListener('click', function (e) {
+        var isOpen = item.classList.contains('is-open');
+
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+
+        if (isTouchMode()) {
+          e.preventDefault();
+          isOpen ? close(item) : open(item);
+        }
+      });
+
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          open(item);
+          if (links[0]) links[0].focus();
+        }
+
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          open(item);
+          if (links.length) links[links.length - 1].focus();
+        }
+
+        if (e.key === 'Escape') {
+          close(item);
+          trigger.focus();
+        }
+      });
+
+      panel.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          close(item);
+          trigger.focus();
+        }
+      });
+
       item.addEventListener('focusout', function (e) {
-        if (!item.contains(e.relatedTarget)) close();
+        if (!item.contains(e.relatedTarget)) close(item);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      items.forEach(function (item) {
+        if (!item.contains(e.target)) close(item);
       });
     });
   }

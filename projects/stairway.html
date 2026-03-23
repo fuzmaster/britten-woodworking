@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stairway — Britten Woodworking</title>
+  <meta name="description" content="Custom hand-crafted staircase by Britten Woodworking. Period-accurate newel posts, balusters, and stair moulding. Connecticut." />
+  <link rel="canonical" href="https://www.brittenwoodworking.com/projects/stairway" />
+  <meta name="theme-color" content="#171410" />
+  <meta property="og:title" content="Stairway — Britten Woodworking" />
+  <meta property="og:description" content="Custom hand-crafted staircase with period-accurate newel posts, balusters, and stair moulding. Connecticut." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.brittenwoodworking.com/images/stairway/stair-finished-full.jpg" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .gallery-img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;transition:transform 0.4s cubic-bezier(0.25,0.1,0.25,1),filter 0.3s ease;}
+    .gallery-img:hover{transform:scale(1.03);filter:brightness(1.05);}
+    .photo-cell{overflow:hidden;position:relative;}
+    .lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(10,8,6,0.96);align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;}
+    .lightbox.is-open{display:flex;}
+    .lightbox__inner{position:relative;max-width:min(90vw,1100px);max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:1rem;}
+    .lightbox__img{max-width:100%;max-height:82vh;object-fit:contain;display:block;border:1px solid rgba(184,134,78,0.25);}
+    .lightbox__caption{font-family:'Lora',serif;font-size:0.8rem;font-style:italic;color:#A89880;letter-spacing:0.06em;text-align:center;}
+    .lightbox__close{position:fixed;top:1.25rem;right:1.5rem;background:none;border:1px solid rgba(184,134,78,0.4);color:#B8864E;font-size:1.5rem;line-height:1;width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;}
+    .lightbox__close:hover{background:rgba(184,134,78,0.15);color:#F0EBE3;}
+    .lightbox__nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(23,20,16,0.7);border:1px solid rgba(184,134,78,0.3);color:#B8864E;font-size:1.75rem;width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;z-index:1001;}
+    .lightbox__nav:hover{background:rgba(184,134,78,0.2);color:#F0EBE3;}
+    .lightbox__prev{left:1rem;}
+    .lightbox__next{right:1rem;}
+    .lightbox__counter{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);font-family:'Lora',serif;font-size:0.75rem;font-style:italic;color:#6B5E4E;letter-spacing:0.1em;}
+  
+    .stair-video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-xl);
+    }
+    @media (max-width: 640px) {
+      .stair-video-grid { grid-template-columns: 1fr; }
+    }
+    .stair-video-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .stair-video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display: block;
+      background: var(--color-bg);
+    }
+    .stair-video-caption {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-style: italic;
+      color: var(--color-text-tertiary);
+      letter-spacing: var(--tracking-wide);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="site-nav__inner">
+      <a href="../index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+        <img src="../Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
+             class="site-nav__logo-img" width="99" height="48"
+             fetchpriority="high" loading="eager" decoding="async" />
+      </a>
+      <nav aria-label="Primary navigation">
+        <ul class="site-nav__links" role="list">
+          <li><a href="../about.html">About</a></li>
+          <li class="site-nav__item--has-dropdown">
+            <a href="../work.html" class="site-nav__dropdown-trigger" aria-haspopup="true" aria-expanded="false">Work</a>
+            <ul class="site-nav__dropdown" role="list" aria-label="Work subcategories">
+              <li><a href="cabinetry.html">Cabinetry</a></li>
+              <li><a href="entryways.html">Entryways</a></li>
+              <li><a href="paneling.html">Paneling</a></li>
+              <li><a href="moldings.html">Moldings</a></li>
+              <li><a href="corner-cabinetry.html">Corner Cabinetry</a></li>
+              <li><a href="shutters.html">Shutters</a></li>
+              <li><a href="storm-doors.html">Storm Doors</a></li>
+              <li><a href="stairway.html" aria-current="page">Stairway</a></li>
+            </ul>
+          </li>
+          <li><a href="../services.html">Services</a></li>
+          <li><a href="../weatherstrip.html">Weatherstrip</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </nav>
+      <button class="site-nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="site-nav__burger-icon" width="24" height="18" viewBox="0 0 24 18" fill="none" aria-hidden="true" focusable="false">
+          <rect class="site-nav__burger-top"    x="0" y="0"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect class="site-nav__burger-bottom" x="0" y="16" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+      <a href="../contact.html" class="btn btn-primary site-nav__cta">Start a Project</a>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- INTRO -->
+    <section class="project-intro" aria-labelledby="project-heading">
+      <div class="container container--narrow">
+        <span class="eyebrow project-intro__eyebrow">Portfolio &mdash; Work</span>
+        <h1 id="project-heading" class="h1-display project-intro__heading">Stairway</h1>
+        <div class="project-intro__copy" data-reveal>
+          <p class="lead">A full staircase built from scratch — period-accurate newel posts, hand-turned balusters, and moulded tread nosings.</p>
+          <p>The framing, stringers, and finish work were all done in house. Dark-stained treads contrast against natural wood balusters, grounded by square newel posts with hand-cut cap moulding.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 1 — Finished Stair -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-1-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center">
+          <div class="section-badge u-jc-center"><span class="section-badge__num">01</span> Finished Work</div>
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">
+            Completed <em>Staircase</em>
+          </h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--2col" data-reveal="stagger">
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-finished-full.jpg"
+                 alt="Completed staircase with dark stained treads, wood railing, and finished landing"
+                 loading="eager" decoding="async"
+                 data-caption="Completed stair — dark treads, wood rail" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-finished-up.jpg"
+                 alt="Completed staircase looking upward, dark stained treads with light wood balusters"
+                 loading="lazy" decoding="async"
+                 data-caption="Completed stair — view looking up" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-landing.jpg"
+                 alt="Landing view of completed staircase with dark treads and wood-paneled walls"
+                 loading="lazy" decoding="async"
+                 data-caption="Completed stair — landing view" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-rail-run.jpg"
+                 alt="Stair railing run viewed from above, finished dark stain"
+                 loading="lazy" decoding="async"
+                 data-caption="Completed stair — railing run from above" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2 — Detail Work -->
+    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-2-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center">
+          <div class="section-badge u-jc-center"><span class="section-badge__num">02</span> Joinery &amp; Hardware</div>
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-2-heading" class="h2-section project-gallery-title">
+            Detail <em>Work</em>
+          </h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger">
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-newel-finished.jpg"
+                 alt="Finished newel post with decorative cap, dark stained wood"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — finished newel post with cap" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-post-cap.jpg"
+                 alt="Square newel post cap moulding detail, close-up"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — newel post cap moulding" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-newel-cap.jpg"
+                 alt="Newel post cap plinth detail, raw pine — precision-cut square moulding"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — newel cap plinth, raw pine" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-baluster-rail.jpg"
+                 alt="Baluster bottom rail connection detail, cherry and dark stain finish"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — baluster to rail connection" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-detail-natural.jpg"
+                 alt="Newel post and baluster connection in natural light, finished installation"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — newel post and balusters, natural light" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-tread-edge.jpg"
+                 alt="Stair tread nosing edge detail, raw pine, precision-cut profile"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — tread nosing edge profile" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-nosing-profile.jpg"
+                 alt="Stair nosing moulding profile, angled close-up, raw pine"
+                 loading="lazy" decoding="async"
+                 data-caption="Detail — nosing moulding profile" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3 — Construction Process -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-3-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center">
+          <div class="section-badge u-jc-center"><span class="section-badge__num">03</span> Fabrication</div>
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-3-heading" class="h2-section project-gallery-title">
+            Process of <em>Construction</em>
+          </h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--2col" data-reveal="stagger">
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-frame-balusters.jpg"
+                 alt="Balusters and newel post framing during construction phase"
+                 loading="lazy" decoding="async"
+                 data-caption="Construction — baluster framing" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-frame-risers.jpg"
+                 alt="Open stair framework showing risers, treads, and stringers under construction"
+                 loading="lazy" decoding="async"
+                 data-caption="Construction — risers and stringers" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-frame-corner.jpg"
+                 alt="Stair framing from above, corner view showing structural framework"
+                 loading="lazy" decoding="async"
+                 data-caption="Construction — framing from above" />
+          </div>
+          <div class="photo-cell">
+            <img class="gallery-img"
+                 src="../images/stairway/stair-construct-landing.jpg"
+                 alt="Stair from landing during construction, natural pine framing"
+                 loading="lazy" decoding="async"
+                 data-caption="Construction — landing view, pine framing" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4 — Installation Videos -->
+    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-4-heading">
+      <div class="container">
+        <header class="project-gallery-header u-center">
+          <div class="section-badge u-jc-center"><span class="section-badge__num">04</span> Video</div>
+          <div class="divider--accent u-mx-auto"></div>
+          <h2 id="gallery-4-heading" class="h2-section project-gallery-title">
+            Installation <em>Videos</em>
+          </h2>
+        </header>
+        <div class="stair-video-grid">
+          <div class="stair-video-wrap">
+            <video class="stair-video"
+                   src="../images/stairway/stair-install-01.mp4"
+                   autoplay muted loop playsinline
+                   aria-label="Stairway installation video 1"></video>
+            <p class="stair-video-caption">Installation &mdash; Part 1</p>
+          </div>
+          <div class="stair-video-wrap">
+            <video class="stair-video"
+                   src="../images/stairway/stair-install-02.mp4"
+                   autoplay muted loop playsinline
+                   aria-label="Stairway installation video 2"></video>
+            <p class="stair-video-caption">Installation &mdash; Part 2</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="project-pagination" aria-label="Portfolio navigation">
+    <a href="storm-doors.html" class="project-pagination__prev">
+      <span class="project-pagination__arrow" aria-hidden="true">&lsaquo;</span>
+      <span class="project-pagination__label">Storm Doors</span>
+    </a>
+    <span></span>
+  </nav>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand-block">
+        <p class="site-footer__brand">Britten Woodworking</p>
+        <p class="site-footer__tagline">18th-century colonial craftsmanship.<br />Handbuilt in Connecticut for over 30 years.</p>
+      </div>
+      <div class="site-footer__contact">
+        <span class="eyebrow u-mb-md">Get in Touch</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="mailto:michaelspikebritten@gmail.com">michaelspikebritten@gmail.com</a></li>
+          <li><a href="tel:+18607166994">(860) 716-6994</a></li>
+          <li class="site-footer__location">Connecticut, USA</li>
+        </ul>
+      </div>
+      <div class="site-footer__links-block">
+        <span class="eyebrow u-mb-md">Follow &amp; Review</span>
+        <ul role="list" class="site-footer__contact-list">
+          <li><a href="https://www.facebook.com/BrittenWoodworking/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          <li><a href="https://www.instagram.com/brittenwoodworkingcompany/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://linktr.ee/brittenwoodworking" class="footer-review-link" target="_blank" rel="noopener noreferrer">Leave a Review</a></li>
+        </ul>
+      </div>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+    </div>
+  </footer>
+
+  <script src="../site.js" defer></script>
+
+</body>
+</html>
