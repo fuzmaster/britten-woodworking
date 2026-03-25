@@ -2035,12 +2035,12 @@ details[open] .ws-step__icon::after {
   resize:      vertical;
   min-height:  140px;
   line-height: var(--leading-body);
-}
 
-.contact-form__select {
   min-height: auto;
   resize: none;
 }
+
+
 
 
 
