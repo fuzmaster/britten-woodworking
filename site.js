@@ -337,7 +337,159 @@
   }
 
   /* =========================================================
-     6. PROJECT GALLERY LIGHTBOX
+     6. HOMEPAGE TESTIMONIALS ROTATOR
+     ─────────────────────────────────────────────────────────
+     Shuffles testimonial order on each page load, then rotates
+     through them automatically with manual controls.
+  ========================================================= */
+
+  function initHomeTestimonials() {
+    var root = $('[data-home-testimonials]');
+    if (!root) return;
+
+    var textEl = $('[data-home-testimonial-text]', root);
+    var authorEl = $('[data-home-testimonial-author]', root);
+    var sourceEl = $('[data-home-testimonial-source]', root);
+    var dateEl = $('[data-home-testimonial-date]', root);
+    var dotsWrap = $('[data-home-testimonial-dots]', root);
+    var prevBtn = $('[data-home-testimonial-prev]', root);
+    var nextBtn = $('[data-home-testimonial-next]', root);
+
+    if (!textEl || !authorEl || !sourceEl || !dateEl || !dotsWrap) return;
+
+    var testimonials = [
+      {
+        author: 'Patrick Battersby',
+        source: 'Google',
+        date: '1 year ago',
+        text: 'There are carpenters and then there are professional woodworking craftsmen. Michael Britten is a professional craftsman. I would recommend Britten Woodworking to anyone looking for high quality craftsmanship.'
+      },
+      {
+        author: 'Albert Hofmann',
+        source: 'Google',
+        date: '2 years ago',
+        text: 'Mike did a super job making our front door. He understood exactly what we wanted. Wonderful work. We\'d definitely get him again for another project.'
+      },
+      {
+        author: 'Mary Lou Shefrin',
+        source: 'Google',
+        date: '2 years ago',
+        text: 'Mike is probably the most talented woodworker I have ever seen. His vision and input is inspiring and his attention to detail is meticulous. Very highly recommended!'
+      },
+      {
+        author: 'DaBrode',
+        source: 'Google',
+        date: '1 year ago',
+        text: 'Britten came through in a pinch when my business needed it. They nailed the design I was asking for, making my office a pleasure to be in.'
+      },
+      {
+        author: 'Andy Shefrin',
+        source: 'Facebook',
+        date: 'Recommendation',
+        text: 'He did a great job on some very hard work for me and his rates are real good. Glad to know Mike. Great guy.'
+      }
+    ];
+
+    function shuffle(list) {
+      var arr = list.slice();
+      for (var i = arr.length - 1; i > 0; i -= 1) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+      }
+      return arr;
+    }
+
+    var ordered = shuffle(testimonials);
+    var index = 0;
+    var timer = null;
+    var intervalMs = 6500;
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setDotsActive(activeIndex) {
+      $$('button', dotsWrap).forEach(function (dot, i) {
+        var isActive = i === activeIndex;
+        dot.classList.toggle('is-active', isActive);
+        dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    function render(activeIndex) {
+      var item = ordered[activeIndex];
+
+      root.classList.add('is-transitioning');
+      window.setTimeout(function () {
+        textEl.textContent = item.text;
+        authorEl.textContent = item.author;
+        sourceEl.textContent = item.source;
+        dateEl.textContent = item.date;
+        sourceEl.classList.toggle('home-testimonials__source--fb', item.source === 'Facebook');
+        setDotsActive(activeIndex);
+        root.classList.remove('is-transitioning');
+      }, reducedMotion ? 0 : 170);
+    }
+
+    function goTo(nextIndex) {
+      index = (nextIndex + ordered.length) % ordered.length;
+      render(index);
+    }
+
+    function start() {
+      if (reducedMotion) return;
+      window.clearInterval(timer);
+      timer = window.setInterval(function () {
+        goTo(index + 1);
+      }, intervalMs);
+    }
+
+    function stop() {
+      window.clearInterval(timer);
+      timer = null;
+    }
+
+    dotsWrap.innerHTML = '';
+    ordered.forEach(function (item, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'home-testimonials__dot';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Show testimonial ' + (i + 1) + ' from ' + item.author);
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function () {
+        goTo(i);
+        start();
+      });
+      dotsWrap.appendChild(dot);
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        goTo(index - 1);
+        start();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        goTo(index + 1);
+        start();
+      });
+    }
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', function (e) {
+      if (!root.contains(e.relatedTarget)) start();
+    });
+
+    render(index);
+    start();
+  }
+
+  /* =========================================================
+     7. PROJECT GALLERY LIGHTBOX
      ─────────────────────────────────────────────────────────
      Binds every .gallery-img on project pages to a shared
      lightbox with caption, counter, arrows, and keyboard nav.
@@ -465,6 +617,7 @@
     initScrollReveals();
     initForms();
     initSmoothScroll();
+    initHomeTestimonials();
     initProjectLightbox();
   });
 
