@@ -18,6 +18,37 @@
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
+  function rewriteRootRelativeUrlsForFileProtocol() {
+    if (window.location.protocol !== 'file:') return;
+
+    var currentPath = window.location.pathname.replace(/\\/g, '/');
+    var prefix = currentPath.indexOf('/projects/') !== -1 ? '../' : '';
+
+    [
+      ['href', 'a[href^="/"]'],
+      ['href', 'link[href^="/"]'],
+      ['src', 'img[src^="/"]'],
+      ['src', 'script[src^="/"]'],
+      ['src', 'source[src^="/"]'],
+      ['src', 'video[src^="/"]'],
+      ['poster', 'video[poster^="/"]'],
+      ['action', 'form[action^="/"]']
+    ].forEach(function (entry) {
+      var attribute = entry[0];
+      var selector = entry[1];
+
+      $$(selector).forEach(function (node) {
+        var value = node.getAttribute(attribute);
+
+        if (!value || value.indexOf('//') === 0 || value.indexOf('mailto:') === 0 || value.indexOf('tel:') === 0) {
+          return;
+        }
+
+        node.setAttribute(attribute, prefix + value.slice(1));
+      });
+    });
+  }
+
   /* =========================================================
      1. MOBILE NAV OVERLAY
      ─────────────────────────────────────────────────────────
@@ -610,6 +641,8 @@
   /* =========================================================
      INIT
   ========================================================= */
+
+  rewriteRootRelativeUrlsForFileProtocol();
 
   onReady(function () {
     initMobileNav();

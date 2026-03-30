@@ -3549,3 +3549,16 @@ details[open] .ws-step__icon::after {
   justify-content: center;
   flex-wrap:       wrap;
 }
+
+/* Service card — full image (no crop) for woodworking card */
+.service-card__image-wrap--full {
+  aspect-ratio: unset;
+  height: auto;
+}
+.service-card__image--full {
+  width: 100%;
+  height: auto;
+  aspect-ratio: unset;
+  object-fit: contain;
+  background-color: var(--color-bg-raised);
+}
