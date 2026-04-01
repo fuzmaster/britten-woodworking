@@ -107,8 +107,10 @@
       setMobileDropdown(false);
 
       dropdownTrigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        setMobileDropdown(dropdownPanel.hidden);
+        if (dropdownPanel.hidden) {
+          e.preventDefault();
+          setMobileDropdown(true);
+        }
       });
 
       dropdownTrigger.addEventListener('keydown', function (e) {
@@ -251,8 +253,10 @@
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
 
         if (isTouchMode()) {
-          e.preventDefault();
-          isOpen ? close(item) : open(item);
+          if (!isOpen) {
+            e.preventDefault();
+            open(item);
+          }
         }
       });
 

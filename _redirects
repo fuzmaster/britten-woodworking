@@ -1,3 +1,5 @@
-/door-weatherstrip-installation  /weatherstrip.html  301
-/projects/corner-cabinets-cupboards  /projects/corner-cabinetry.html  301
-/thank-you  /thank-you.html  301
+/door-weatherstrip-installation  /weatherstrip.html  200
+/weatherstrip.html  /door-weatherstrip-installation  301
+/projects/corner-cabinets-cupboards  /projects/corner-cabinetry  301
+/thank-you  /thank-you.html  200
+/thank-you.html  /thank-you  301

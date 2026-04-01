@@ -63,6 +63,7 @@
   --leading-tight:  1.15;  /* Headings                      */
   --leading-snug:   1.35;  /* Subheadings, large type       */
   --leading-body:   1.75;  /* Body copy — Lora needs more air than sans-serif */
+  --leading-relaxed: 1.7;  /* Supporting copy blocks        */
   --leading-loose:  1.9;   /* Long-form reading passages    */
 
   /* Letter spacing */
