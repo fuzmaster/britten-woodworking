@@ -18,7 +18,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
   {
@@ -51,7 +51,7 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-nav" role="banner">
     <div class="site-nav__inner">
-      <a href="/index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+      <a href="/" class="site-nav__logo" aria-label="Britten Woodworking — home">
         <img src="/images/Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
              class="site-nav__logo-img" width="99" height="48"
              fetchpriority="high" loading="eager" decoding="async" />
@@ -73,7 +73,7 @@
             </ul>
           </li>
           <li><a href="/services.html" aria-current="page">Services</a></li>
-          <li><a href="/door-weatherstrip-installation">Weatherstrip</a></li>
+          <li><a href="/weatherstrip.html">Weatherstrip</a></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li><a href="/contact.html">Contact</a></li>
 </ul>
@@ -209,8 +209,8 @@
           </div>
 
           <div class="services-contact__form-wrap">
-            <form class="contact-form" aria-label="Services enquiry form" name="contact" data-netlify="true" method="POST" action="/thank-you">
-      <input type="hidden" name="form-name" value="contact" />
+            <form class="contact-form" aria-label="Services enquiry form" name="services-contact" data-netlify="true" method="POST" action="/thank-you">
+      <input type="hidden" name="form-name" value="services-contact" />
               <div class="contact-form__row contact-form__row--two-col">
                 <div class="contact-form__field">
                   <label for="svc-first-name" class="contact-form__label">First Name <span aria-hidden="true">*</span></label>
@@ -225,11 +225,9 @@
                 <label for="svc-email" class="contact-form__label">Email <span aria-hidden="true">*</span></label>
                 <input type="email" id="svc-email" name="email" class="contact-form__input" required autocomplete="email" />
               </div>
-              <div class="contact-form__row contact-form__row--two-col">
-                <div class="contact-form__field">
-                  <label for="svc-phone" class="contact-form__label">Phone</label>
-                  <input type="tel" id="svc-phone" name="phone" class="contact-form__input" autocomplete="tel" />
-                </div>
+              <div class="contact-form__field">
+                <label for="svc-phone" class="contact-form__label">Phone</label>
+                <input type="tel" id="svc-phone" name="phone" class="contact-form__input" autocomplete="tel" />
               </div>
               <div class="contact-form__field">
                 <label for="svc-message" class="contact-form__label">Message <span aria-hidden="true">*</span></label>

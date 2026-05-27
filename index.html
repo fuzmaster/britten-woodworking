@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
   {
@@ -56,7 +56,7 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="site-nav" role="banner">
     <div class="site-nav__inner">
-      <a href="/index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+      <a href="/" class="site-nav__logo" aria-label="Britten Woodworking — home">
         <img src="/images/Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
              class="site-nav__logo-img" width="99" height="48"
              fetchpriority="high" loading="eager" decoding="async" />
@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/door-weatherstrip-installation">Weatherstrip</a></li>
+          <li><a href="/weatherstrip.html">Weatherstrip</a></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li><a href="/contact.html">Contact</a></li>
 </ul>
@@ -378,57 +378,9 @@
       </div>
       <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
     </div>
-  </footer><script src="site.js" defer></script>
+  </footer>
 
-  <script>
-    (function(){
-      var INTERVAL=5500,
-          slides=Array.from(document.querySelectorAll('.slide')),
-          dots=Array.from(document.querySelectorAll('.slideshow-dot')),
-          prev=document.getElementById('slide-prev'),
-          next=document.getElementById('slide-next'),
-          bar=document.getElementById('slideshow-progress'),
-          cur=0,timer=null;
-
-      function goTo(i){
-        slides[cur].classList.remove('is-active');
-        dots[cur].classList.remove('is-active');
-        dots[cur].setAttribute('aria-selected','false');
-        cur=(i+slides.length)%slides.length;
-        slides[cur].classList.add('is-active');
-        dots[cur].classList.add('is-active');
-        dots[cur].setAttribute('aria-selected','true');
-        resetBar();
-      }
-      function resetBar(){
-        if(!bar)return;
-        bar.style.transition='none';bar.style.width='0%';
-        requestAnimationFrame(function(){requestAnimationFrame(function(){
-          bar.style.transition='width '+INTERVAL+'ms linear';bar.style.width='100%';
-        });});
-      }
-      function start(){clearInterval(timer);timer=setInterval(function(){goTo(cur+1);},INTERVAL);}
-
-      var sec=document.querySelector('.hero-slideshow');
-      if(sec){
-        sec.addEventListener('mouseenter',function(){clearInterval(timer);});
-        sec.addEventListener('mouseleave',start);
-        sec.addEventListener('touchstart',function(e){this._tx=e.touches[0].clientX;},{passive:true});
-        sec.addEventListener('touchend',function(e){
-          var dx=e.changedTouches[0].clientX-this._tx;
-          if(Math.abs(dx)>50){goTo(dx<0?cur+1:cur-1);start();}
-        },{passive:true});
-      }
-      if(prev)prev.addEventListener('click',function(){goTo(cur-1);start();});
-      if(next)next.addEventListener('click',function(){goTo(cur+1);start();});
-      dots.forEach(function(d,i){d.addEventListener('click',function(){goTo(i);start();});});
-      document.addEventListener('keydown',function(e){
-        if(e.key==='ArrowLeft'){goTo(cur-1);start();}
-        if(e.key==='ArrowRight'){goTo(cur+1);start();}
-      });
-      start();resetBar();
-    })();
-  </script>
+  <script src="site.js" defer></script>
 
 </body>
 </html>

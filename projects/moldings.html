@@ -17,101 +17,13 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <style>
-    .gallery-img{
-      width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;
-      transition:transform 0.4s cubic-bezier(0.25,0.1,0.25,1),filter 0.3s ease;
-    }
-    .gallery-img:hover{transform:scale(1.03);filter:brightness(1.05);}
-    .photo-cell{overflow:hidden;position:relative;}
-
-    /* Lightbox */
-    .lightbox{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(10,8,6,0.96);
-      align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;
-    }
-    .lightbox.is-open{display:flex;}
-    .lightbox__inner{
-      position:relative;max-width:min(90vw,1100px);max-height:90vh;
-      display:flex;flex-direction:column;align-items:center;gap:1rem;
-    }
-    .lightbox__img{max-width:100%;max-height:82vh;object-fit:contain;display:block;border:1px solid rgba(184,134,78,0.25);}
-    .lightbox__caption{font-family:'Lora',serif;font-size:0.8rem;font-style:italic;color:#A89880;letter-spacing:0.06em;text-align:center;}
-    .lightbox__close{
-      position:fixed;top:1.25rem;right:1.5rem;background:none;
-      border:1px solid rgba(184,134,78,0.4);color:#B8864E;
-      font-size:1.5rem;line-height:1;width:2.5rem;height:2.5rem;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      transition:background 0.2s,color 0.2s;
-    }
-    .lightbox__close:hover{background:rgba(184,134,78,0.15);color:#F0EBE3;}
-    .lightbox__nav{
-      position:fixed;top:50%;transform:translateY(-50%);
-      background:rgba(23,20,16,0.7);border:1px solid rgba(184,134,78,0.3);
-      color:#B8864E;font-size:1.75rem;width:3rem;height:3rem;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      transition:background 0.2s,color 0.2s;z-index:1001;
-    }
-    .lightbox__nav:hover{background:rgba(184,134,78,0.2);color:#F0EBE3;}
-    .lightbox__prev{left:1rem;}
-    .lightbox__next{right:1rem;}
-    .lightbox__counter{
-      position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);
-      font-family:'Lora',serif;font-size:0.75rem;font-style:italic;
-      color:#6B5E4E;letter-spacing:0.1em;
-    }
-
-    /*
-      Moldings collage grid — 4 cols × 4 rows, named areas:
-      Matches screenshot layout:
-
-      [ a  ][ b ][ e ][ f ]   row 1
-      [ a  ][ c ][ e ][ f ]   row 2
-      [ a  ][ c ][ g ][ h ]   row 3
-      [ d  ][ c ][ g ][ h ]   row 4 (extra 9th photo goes in col 2 row 4 → i)
-
-      With 9 images we use:
-      a = col1 rows 1-3 (tall portrait)
-      b = col2 row 1 (portrait)
-      c = col2 rows 2-4 (tall, spans 3)
-      d = col1 row 4 (portrait)
-      e = col3 rows 1-2 (tall portrait)
-      f = col4 rows 1-2 (tall portrait)
-      g = col3 rows 3-4 (tall portrait)
-      h = col4 rows 3-4 (tall portrait)
-      i = extra — placed after d in col1 or as a 5th row overflow
-    */
-    .moldings-grid{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      grid-template-rows:repeat(4,auto);
-      gap:var(--space-sm);
-      grid-template-areas:
-        "a b e f"
-        "a c e f"
-        "a c g h"
-        "d c g h";
-    }
-    @media(max-width:768px){
-      .moldings-grid{
-        grid-template-columns:repeat(2,1fr);
-        grid-template-areas:
-          "a b"
-          "a c"
-          "d c"
-          "e f"
-          "g h";
-      }
-    }
-    @media(max-width:480px){
-      .moldings-grid{
-        grid-template-columns:1fr;
-        grid-template-areas:"a""b""c""d""e""f""g""h";
-      }
-    }
+    /* Moldings collage — 4-col named-area grid */
+    .moldings-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,auto);gap:var(--space-sm);grid-template-areas:"a b e f""a c e f""a c g h""d c g h";}
+    @media(max-width:768px){.moldings-grid{grid-template-columns:repeat(2,1fr);grid-template-areas:"a b""a c""d c""e f""g h";}}
+    @media(max-width:480px){.moldings-grid{grid-template-columns:1fr;grid-template-areas:"a""b""c""d""e""f""g""h";}}
   </style>
 </head>
 <body>
@@ -120,7 +32,7 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-nav" role="banner">
     <div class="site-nav__inner">
-      <a href="/index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+      <a href="/" class="site-nav__logo" aria-label="Britten Woodworking — home">
         <img src="/images/Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
              class="site-nav__logo-img" width="99" height="48"
              fetchpriority="high" loading="eager" decoding="async" />
@@ -142,7 +54,7 @@
             </ul>
           </li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/door-weatherstrip-installation">Weatherstrip</a></li>
+          <li><a href="/weatherstrip.html">Weatherstrip</a></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li><a href="/contact.html">Contact</a></li>
 </ul>

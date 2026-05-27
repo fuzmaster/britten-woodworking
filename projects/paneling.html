@@ -17,105 +17,15 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
   <style>
-    .gallery-img{
-      width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;
-      transition:transform 0.4s cubic-bezier(0.25,0.1,0.25,1),filter 0.3s ease;
-    }
-    .gallery-img:hover{transform:scale(1.03);filter:brightness(1.05);}
-    .photo-cell{overflow:hidden;position:relative;}
-
-    /* Lightbox */
-    .lightbox{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(10,8,6,0.96);
-      align-items:center;justify-content:center;padding:1rem;cursor:zoom-out;
-    }
-    .lightbox.is-open{display:flex;}
-    .lightbox__inner{
-      position:relative;max-width:min(90vw,1100px);max-height:90vh;
-      display:flex;flex-direction:column;align-items:center;gap:1rem;
-    }
-    .lightbox__img{max-width:100%;max-height:82vh;object-fit:contain;display:block;border:1px solid rgba(184,134,78,0.25);}
-    .lightbox__caption{font-family:'Lora',serif;font-size:0.8rem;font-style:italic;color:#A89880;letter-spacing:0.06em;text-align:center;}
-    .lightbox__close{
-      position:fixed;top:1.25rem;right:1.5rem;background:none;
-      border:1px solid rgba(184,134,78,0.4);color:#B8864E;
-      font-size:1.5rem;line-height:1;width:2.5rem;height:2.5rem;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      transition:background 0.2s,color 0.2s;
-    }
-    .lightbox__close:hover{background:rgba(184,134,78,0.15);color:#F0EBE3;}
-    .lightbox__nav{
-      position:fixed;top:50%;transform:translateY(-50%);
-      background:rgba(23,20,16,0.7);border:1px solid rgba(184,134,78,0.3);
-      color:#B8864E;font-size:1.75rem;width:3rem;height:3rem;
-      display:flex;align-items:center;justify-content:center;cursor:pointer;
-      transition:background 0.2s,color 0.2s;z-index:1001;
-    }
-    .lightbox__nav:hover{background:rgba(184,134,78,0.2);color:#F0EBE3;}
-    .lightbox__prev{left:1rem;}
-    .lightbox__next{right:1rem;}
-    .lightbox__counter{
-      position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);
-      font-family:'Lora',serif;font-size:0.75rem;font-style:italic;
-      color:#6B5E4E;letter-spacing:0.1em;
-    }
-
-    /* Section badge */
-    .section-badge{
-      display:inline-flex;align-items:center;gap:0.5rem;
-      font-family:'Lora',serif;font-size:0.7rem;font-style:italic;
-      letter-spacing:0.12em;text-transform:uppercase;color:#6B5E4E;margin-bottom:0.5rem;
-    }
-    .section-badge__num{
-      font-family:'Playfair Display',serif;font-size:0.65rem;font-weight:700;
-      color:#B8864E;border:1px solid rgba(184,134,78,0.35);padding:0.1rem 0.4rem;
-    }
-
-    /*
-      Knee wall grid — matches screenshot layout:
-      Col 1: wide landscape (R1), wide landscape (R2)
-      Col 2: wide landscape (R1), wide landscape (R2)
-      Col 3: tall portrait spanning R1+R2
-
-      [1][2][3]
-      [4][5][3]
-    */
-    .kneewall-grid{
-      display:grid;
-      grid-template-columns:2fr 2fr 1fr;
-      grid-template-rows:auto auto;
-      gap:var(--space-sm);
-      grid-template-areas:
-        "a b c"
-        "d e c";
-    }
+    /* Knee wall collage grid */
+    .kneewall-grid{display:grid;grid-template-columns:2fr 2fr 1fr;grid-template-rows:auto auto;gap:var(--space-sm);grid-template-areas:"a b c""d e c";}
     .kneewall-grid .photo-cell:nth-child(3){grid-area:c;}
-    @media(max-width:640px){
-      .kneewall-grid{
-        grid-template-columns:1fr 1fr;
-        grid-template-areas:
-          "a b"
-          "d e"
-          "c c";
-      }
-    }
-
-    /*
-      Variety grid — matches screenshot layout:
-      3-col, 5 rows
-      Col 1 spans rows 1–2 (tall portrait)
-      Col 1 spans rows 3–4 (tall portrait)
-      Col 2 and 3 fill normally
-    */
-    .variety-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:var(--space-sm);
-    }
+    @media(max-width:640px){.kneewall-grid{grid-template-columns:1fr 1fr;grid-template-areas:"a b""d e""c c";}}
+    /* Variety grid — 3-col with row-spanning */
+    .variety-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-sm);}
     .variety-grid .span-2{grid-row:span 2;}
   </style>
 </head>
@@ -125,7 +35,7 @@
     <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-nav" role="banner">
     <div class="site-nav__inner">
-      <a href="/index.html" class="site-nav__logo" aria-label="Britten Woodworking — home">
+      <a href="/" class="site-nav__logo" aria-label="Britten Woodworking — home">
         <img src="/images/Logo_BrandV2.png" alt="Britten Woodworking — Hand-Crafted USA"
              class="site-nav__logo-img" width="99" height="48"
              fetchpriority="high" loading="eager" decoding="async" />
@@ -147,7 +57,7 @@
             </ul>
           </li>
           <li><a href="/services.html">Services</a></li>
-          <li><a href="/door-weatherstrip-installation">Weatherstrip</a></li>
+          <li><a href="/weatherstrip.html">Weatherstrip</a></li>
           <li><a href="/testimonials.html">Testimonials</a></li>
           <li><a href="/contact.html">Contact</a></li>
 </ul>

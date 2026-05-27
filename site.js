@@ -338,27 +338,15 @@
      No external dependencies.
   ========================================================= */
 
-  function initForms() {
-    /* Netlify Forms — native HTML POST.
-       Only ensures hidden form-name input exists. No JS interception. */
-    $$('.contact-form').forEach(function (form) {
-      if (!form.querySelector('input[name="form-name"]')) {
-        var hidden = document.createElement('input');
-        hidden.type  = 'hidden';
-        hidden.name  = 'form-name';
-        hidden.value = form.getAttribute('name') || 'contact';
-        form.insertBefore(hidden, form.firstChild);
-      }
-    });
-  }
-
   /* =========================================================
      5. SMOOTH ANCHOR SCROLL
      ─────────────────────────────────────────────────────────
      Accounts for sticky nav height when jumping to #anchors.
+     Respects prefers-reduced-motion.
   ========================================================= */
 
   function initSmoothScroll() {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     $$('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         var target = document.querySelector(a.getAttribute('href'));
@@ -366,7 +354,7 @@
         e.preventDefault();
         var navHeight = ($('.site-nav') || {}).offsetHeight || 72;
         var top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
-        window.scrollTo({ top: top, behavior: 'smooth' });
+        window.scrollTo({ top: top, behavior: reducedMotion ? 'auto' : 'smooth' });
       });
     });
   }
@@ -567,6 +555,7 @@
     var nextButton = $('.lightbox__next', lightbox);
 
     var currentIndex = -1;
+    var openerElement = null;
     var previousBodyOverflow = '';
 
     function setImage(index) {
@@ -584,10 +573,13 @@
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = previousBodyOverflow;
+      if (openerElement) { openerElement.focus(); }
       currentIndex = -1;
+      openerElement = null;
     }
 
     function openLightbox(index) {
+      openerElement = document.activeElement || null;
       currentIndex = index;
       setImage(currentIndex);
       previousBodyOverflow = document.body.style.overflow;
@@ -643,6 +635,87 @@
   }
 
   /* =========================================================
+     8. HERO SLIDESHOW
+     ─────────────────────────────────────────────────────────
+     Auto-advances every INTERVAL ms. Pauses on hover/focus.
+     Touch-swipe and keyboard arrow support. Progress bar
+     animation synced to the interval.
+     Arrow key handler skips when focus is on an interactive
+     element to avoid interfering with keyboard navigation.
+  ========================================================= */
+
+  function initSlideshow() {
+    var INTERVAL = 5500;
+    var slides = $$('.slide');
+    var dots   = $$('.slideshow-dot');
+    var prev   = document.getElementById('slide-prev');
+    var next   = document.getElementById('slide-next');
+    var bar    = document.getElementById('slideshow-progress');
+    var cur    = 0;
+    var timer  = null;
+
+    if (!slides.length) return;
+
+    function goTo(i) {
+      slides[cur].classList.remove('is-active');
+      dots[cur].classList.remove('is-active');
+      dots[cur].setAttribute('aria-selected', 'false');
+      cur = (i + slides.length) % slides.length;
+      slides[cur].classList.add('is-active');
+      dots[cur].classList.add('is-active');
+      dots[cur].setAttribute('aria-selected', 'true');
+      resetBar();
+    }
+
+    function resetBar() {
+      if (!bar) return;
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          bar.style.transition = 'width ' + INTERVAL + 'ms linear';
+          bar.style.width = '100%';
+        });
+      });
+    }
+
+    function start() {
+      clearInterval(timer);
+      timer = setInterval(function () { goTo(cur + 1); }, INTERVAL);
+    }
+
+    var sec = $('.hero-slideshow');
+    if (sec) {
+      sec.addEventListener('mouseenter', function () { clearInterval(timer); });
+      sec.addEventListener('mouseleave', start);
+      sec.addEventListener('touchstart', function (e) {
+        this._tx = e.touches[0].clientX;
+      }, { passive: true });
+      sec.addEventListener('touchend', function (e) {
+        var dx = e.changedTouches[0].clientX - this._tx;
+        if (Math.abs(dx) > 50) { goTo(dx < 0 ? cur + 1 : cur - 1); start(); }
+      }, { passive: true });
+    }
+
+    if (prev) prev.addEventListener('click', function () { goTo(cur - 1); start(); });
+    if (next) next.addEventListener('click', function () { goTo(cur + 1); start(); });
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { goTo(i); start(); });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      /* Skip if focus is inside a form control or interactive element */
+      var tag = document.activeElement ? document.activeElement.tagName : '';
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || tag === 'A') return;
+      if (e.key === 'ArrowLeft')  { goTo(cur - 1); start(); }
+      if (e.key === 'ArrowRight') { goTo(cur + 1); start(); }
+    });
+
+    start();
+    resetBar();
+  }
+
+  /* =========================================================
      INIT
   ========================================================= */
 
@@ -652,10 +725,10 @@
     initMobileNav();
     initDesktopDropdown();
     initScrollReveals();
-    initForms();
     initSmoothScroll();
     initHomeTestimonials();
     initProjectLightbox();
+    initSlideshow();
   });
 
 })();
