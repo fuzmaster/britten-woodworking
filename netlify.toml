@@ -1,0 +1,44 @@
+# Britten Woodworking — Netlify configuration
+# Security headers applied to every response.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Clickjacking protection
+    X-Frame-Options = "DENY"
+
+    # Prevent MIME-type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Don't leak referrers to other origins beyond the origin itself
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Disable powerful browser features the site doesn't use
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=(), payment=(), usb=()"
+
+    # Force HTTPS for a year (Netlify handles SSL)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+    # Content Security Policy
+    # - 'unsafe-inline' on script-src is for JSON-LD blocks (LocalBusiness schema)
+    # - 'unsafe-inline' on style-src is for the per-page <style> blocks (project galleries, weatherstrip, thank-you, work)
+    # - Google Fonts CSS and woff2 files come from googleapis.com and gstatic.com
+    # - Form posts go back to the same origin (Netlify Forms intercepts)
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; upgrade-insecure-requests"
+
+# Cache static assets aggressively (images, fonts, CSS, JS).
+# HTML stays default (revalidate) so deploys ship instantly.
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"
+
+[[headers]]
+  for = "/site.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, must-revalidate"

@@ -319,29 +319,16 @@
 
         <div class="ws-examples__grid">
 
-          <!--
-            VIDEO SLOT 1
-            Replace this block with:
-            <video src="/images/weatherstrip/weatherstrip-install-1.mp4"
-                   autoplay muted loop playsinline
-                   width="540" height="960"
-                   aria-label="Weatherstrip groove cutting process">
-            </video>
-          -->
           <video class="ws-examples__video-placeholder"
-                  src="/images/weatherstrip/weatherstrip-install-1.mp4"
+                  src="/images/weatherstrip/ws-video-01.mp4"
                   autoplay muted loop playsinline
                   aria-label="Weatherstrip groove cutting process video">
           </video>
 
-          <!--
-            VIDEO SLOT 2
-            Reusing the same working video file for the second slot.
-          -->
           <video class="ws-examples__video-placeholder"
-                  src="/images/weatherstrip/weatherstrip-install-1.mp4"
+                  src="/images/weatherstrip/ws-video-02.mp4"
                   autoplay muted loop playsinline
-                  aria-label="Weatherstrip groove cutting process video">
+                  aria-label="Weatherstrip barbed insertion process video">
           </video>
 
         </div>
@@ -389,8 +376,9 @@
             Add action="https://..." method="POST" at that time.
           -->
           <div class="ws-book__form-wrap">
-            <form class="contact-form" aria-label="Weatherstrip installation enquiry form" name="weatherstrip-contact" data-netlify="true" method="POST" action="/thank-you">
+            <form class="contact-form" aria-label="Weatherstrip installation enquiry form" name="weatherstrip-contact" data-netlify="true" data-netlify-honeypot="bot-field" method="POST" action="/thank-you">
       <input type="hidden" name="form-name" value="weatherstrip-contact" />
+      <p hidden aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
               <div class="contact-form__row contact-form__row--two-col">
                 <div class="contact-form__field">
@@ -456,7 +444,7 @@
           <li><a href="https://www.facebook.com/BrittenWoodworking/reviews" class="footer-review-link" target="_blank" rel="noopener noreferrer">Facebook Reviews</a></li>
         </ul>
       </div>
-      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA.</p>
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> Britten Woodworking. All rights reserved. Connecticut, USA. &middot; <a href="/privacy.html">Privacy</a></p>
     </div>
   </footer>
 
