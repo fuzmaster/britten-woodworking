@@ -26,12 +26,12 @@
     /* Video cell — match .gallery-img sizing inside .photo-cell */
     .gallery-video { width:100%; height:100%; object-fit:cover; display:block; }
 
-    /* Before / After comparison */
+    /* Before / After / Styled sequence */
     .before-after-grid {
-      display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+      display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
       gap:var(--space-md);
     }
-    @media(max-width:700px){ .before-after-grid{ grid-template-columns:1fr; } }
+    @media(max-width:900px){ .before-after-grid{ grid-template-columns:1fr; } }
     .before-after-figure {
       margin:0; position:relative; aspect-ratio: 4/3;
       overflow:hidden;
@@ -46,15 +46,11 @@
       pointer-events:none;
     }
 
-    /* Entertainment extras: portrait video + styled photo */
-    .entertainment-extras {
-      display:grid; grid-template-columns: 1fr 2fr;
-      gap:var(--space-md);
-      margin-top:var(--space-md);
+    /* Entertainment video — centered below the sequence */
+    .entertainment-video-wrap {
+      max-width: 360px; margin: var(--space-md) auto 0;
     }
-    @media(max-width:700px){ .entertainment-extras{ grid-template-columns:1fr; } }
-    .entertainment-video-cell { aspect-ratio: 9/16; max-height: 640px; margin:0 auto; width:100%; }
-    .entertainment-extras .photo-cell:not(.entertainment-video-cell) { aspect-ratio: 4/3; }
+    .entertainment-video-cell { aspect-ratio: 9/16; }
   </style>
 </head>
 <body>
@@ -122,7 +118,7 @@
           <div class="divider--accent"></div>
           <h2 id="gallery-entertainment-heading" class="h2-section project-gallery-title">Built-In <em>Entertainment Center</em></h2>
         </header>
-        <!-- Before / After comparison (featured) -->
+        <!-- Build sequence: Before → After → Styled -->
         <div class="before-after-grid" data-reveal="stagger" data-gallery="entertainment">
           <figure class="before-after-figure photo-cell">
             <span class="before-after-label">Before</span>
@@ -132,10 +128,14 @@
             <span class="before-after-label">After</span>
             <img class="gallery-img" src="/images/cabinetry/cab-entertainment-01.jpg" alt="Built-in entertainment center finished and installed — glass doors, center TV niche, white finish" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — after (finished installation)" />
           </figure>
+          <figure class="before-after-figure photo-cell">
+            <span class="before-after-label">Styled</span>
+            <img class="gallery-img" src="/images/cabinetry/cab-entertainment-02.jpg" alt="Built-in bookshelves with center TV niche, styled with books and personal items" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — styled and lived-in" />
+          </figure>
         </div>
 
-        <!-- Supporting: walk-through video + styled "lived-in" shot -->
-        <div class="entertainment-extras" data-gallery="entertainment">
+        <!-- Walk-through video, centered -->
+        <div class="entertainment-video-wrap">
           <div class="photo-cell entertainment-video-cell">
             <video class="gallery-video"
                    src="/images/cabinetry/cab-entertainment.mp4"
@@ -143,7 +143,6 @@
                    autoplay loop muted playsinline preload="metadata"
                    aria-label="Built-in entertainment center walk-through"></video>
           </div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-02.jpg" alt="Built-in bookshelves with center TV niche, styled with books and personal items" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — styled and lived-in" /></div>
         </div>
       </div>
     </section>
