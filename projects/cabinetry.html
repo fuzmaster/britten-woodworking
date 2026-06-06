@@ -23,6 +23,8 @@
     /* 2-col variety grid */
     .variety-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:var(--space-sm); }
     @media(max-width:700px){ .variety-grid{ grid-template-columns:1fr; } }
+    /* Video cell — match .gallery-img sizing inside .photo-cell */
+    .gallery-video { width:100%; height:100%; object-fit:cover; display:block; }
   </style>
 </head>
 <body>
@@ -82,19 +84,25 @@
       </div>
     </section>
 
-    <!-- SECTION 1 — Antique Wood Pantry (4-col, 1 row) -->
-    <section class="project-gallery-section py-section" aria-labelledby="gallery-1-heading">
+    <!-- SECTION 1 — Built-In Entertainment Center (4-col, 1 row) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-entertainment-heading">
       <div class="container">
         <header class="project-gallery-header">
           <div class="section-badge"><span class="section-badge__num">01</span> Series</div>
           <div class="divider--accent"></div>
-          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">Antique Wood Pantry</h2>
+          <h2 id="gallery-entertainment-heading" class="h2-section project-gallery-title">Built-In <em>Entertainment Center</em></h2>
         </header>
-        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="pantry">
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-01.jpg" alt="Installed antique-finish wood pantry cabinets, full view" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — full installed view" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-02.jpg" alt="Pantry upper cabinets with raised panel doors" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — raised panel door detail" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-03.jpg" alt="Pantry corner — open shelving and closed lower cabinets" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — corner section" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-04.jpg" alt="Pantry base cabinets, antique stain, full width" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — base cabinets" /></div>
+        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="entertainment">
+          <div class="photo-cell">
+            <video class="gallery-video"
+                   src="/images/cabinetry/cab-entertainment.mp4"
+                   poster="/images/cabinetry/cab-entertainment-01.jpg"
+                   autoplay loop muted playsinline preload="metadata"
+                   aria-label="Built-in entertainment center walk-through"></video>
+          </div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-01.jpg" alt="Built-in entertainment center with glass doors and center TV niche, white finish" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — finished installation" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-02.jpg" alt="Built-in bookshelves with center TV niche, styled with books and photos" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — styled with books" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-03.jpg" alt="Built-in entertainment center mid-build — adjustable shelving and pre-finish carcass" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — mid-build, pre-finish" /></div>
         </div>
       </div>
     </section>
@@ -232,6 +240,23 @@
           <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-variety-08.jpg" alt="Full cream kitchen cabinet installation, upper and lower runs" loading="lazy" decoding="async" data-caption="Variety — full kitchen install, cream finish" /></div>
           <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-variety-09.jpg" alt="Cream pantry armoire with drawers, installed in period kitchen" loading="lazy" decoding="async" data-caption="Variety — pantry armoire, period kitchen" /></div>
           <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-variety-10.jpg" alt="Dark red full kitchen cabinet wall with open shelving and butcher block island" loading="lazy" decoding="async" data-caption="Variety — dark red kitchen wall" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 7 — Antique Wood Pantry (moved to end) -->
+    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-1-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">07</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-1-heading" class="h2-section project-gallery-title">Antique Wood Pantry</h2>
+        </header>
+        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="pantry">
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-01.jpg" alt="Installed antique-finish wood pantry cabinets, full view" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — full installed view" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-02.jpg" alt="Pantry upper cabinets with raised panel doors" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — raised panel door detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-03.jpg" alt="Pantry corner — open shelving and closed lower cabinets" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — corner section" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-pantry-04.jpg" alt="Pantry base cabinets, antique stain, full width" loading="lazy" decoding="async" data-caption="Antique Wood Pantry — base cabinets" /></div>
         </div>
       </div>
     </section>
