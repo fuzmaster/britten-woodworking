@@ -25,6 +25,36 @@
     @media(max-width:700px){ .variety-grid{ grid-template-columns:1fr; } }
     /* Video cell — match .gallery-img sizing inside .photo-cell */
     .gallery-video { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* Before / After comparison */
+    .before-after-grid {
+      display:grid; grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:var(--space-md);
+    }
+    @media(max-width:700px){ .before-after-grid{ grid-template-columns:1fr; } }
+    .before-after-figure {
+      margin:0; position:relative; aspect-ratio: 4/3;
+      overflow:hidden;
+    }
+    .before-after-label {
+      position:absolute; top:1rem; left:1rem; z-index:2;
+      background:rgba(0,0,0,.72); color:#fff;
+      padding:.55rem 1.1rem;
+      font-family:'Lora', serif;
+      font-size:.7rem; letter-spacing:.22em; text-transform:uppercase;
+      font-weight:600;
+      pointer-events:none;
+    }
+
+    /* Entertainment extras: portrait video + styled photo */
+    .entertainment-extras {
+      display:grid; grid-template-columns: 1fr 2fr;
+      gap:var(--space-md);
+      margin-top:var(--space-md);
+    }
+    @media(max-width:700px){ .entertainment-extras{ grid-template-columns:1fr; } }
+    .entertainment-video-cell { aspect-ratio: 9/16; max-height: 640px; margin:0 auto; width:100%; }
+    .entertainment-extras .photo-cell:not(.entertainment-video-cell) { aspect-ratio: 4/3; }
   </style>
 </head>
 <body>
@@ -92,17 +122,28 @@
           <div class="divider--accent"></div>
           <h2 id="gallery-entertainment-heading" class="h2-section project-gallery-title">Built-In <em>Entertainment Center</em></h2>
         </header>
-        <div class="project-photo-grid project-photo-grid--4col" data-reveal="stagger" data-gallery="entertainment">
-          <div class="photo-cell">
+        <!-- Before / After comparison (featured) -->
+        <div class="before-after-grid" data-reveal="stagger" data-gallery="entertainment">
+          <figure class="before-after-figure photo-cell">
+            <span class="before-after-label">Before</span>
+            <img class="gallery-img" src="/images/cabinetry/cab-entertainment-03.jpg" alt="Built-in entertainment center mid-build — raw carcass and adjustable shelves before paint" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — before (mid-build)" />
+          </figure>
+          <figure class="before-after-figure photo-cell">
+            <span class="before-after-label">After</span>
+            <img class="gallery-img" src="/images/cabinetry/cab-entertainment-01.jpg" alt="Built-in entertainment center finished and installed — glass doors, center TV niche, white finish" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — after (finished installation)" />
+          </figure>
+        </div>
+
+        <!-- Supporting: walk-through video + styled "lived-in" shot -->
+        <div class="entertainment-extras" data-gallery="entertainment">
+          <div class="photo-cell entertainment-video-cell">
             <video class="gallery-video"
                    src="/images/cabinetry/cab-entertainment.mp4"
                    poster="/images/cabinetry/cab-entertainment-01.jpg"
                    autoplay loop muted playsinline preload="metadata"
                    aria-label="Built-in entertainment center walk-through"></video>
           </div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-01.jpg" alt="Built-in entertainment center with glass doors and center TV niche, white finish" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — finished installation" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-02.jpg" alt="Built-in bookshelves with center TV niche, styled with books and photos" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — styled with books" /></div>
-          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-03.jpg" alt="Built-in entertainment center mid-build — adjustable shelving and pre-finish carcass" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — mid-build, pre-finish" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-entertainment-02.jpg" alt="Built-in bookshelves with center TV niche, styled with books and personal items" loading="lazy" decoding="async" data-caption="Built-In Entertainment Center — styled and lived-in" /></div>
         </div>
       </div>
     </section>
