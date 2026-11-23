@@ -36,6 +36,10 @@
       margin:0; position:relative; aspect-ratio: 4/3;
       overflow:hidden;
     }
+    /* Portrait pair (Arched Built-In: design rendering / finished) */
+    .before-after-grid--portrait { max-width: 900px; margin-inline: auto; }
+    .before-after-grid--portrait .before-after-figure { aspect-ratio: 3/4; }
+    .before-after-grid--portrait + .project-photo-grid { margin-top: var(--space-md); }
     .before-after-label {
       position:absolute; top:1rem; left:1rem; z-index:2;
       background:rgba(0,0,0,.72); color:#fff;
@@ -110,11 +114,40 @@
       </div>
     </section>
 
-    <!-- SECTION 1 — Built-In Entertainment Center (4-col, 1 row) -->
-    <section class="project-gallery-section py-section" aria-labelledby="gallery-entertainment-heading">
+    <!-- SECTION 1 — Arched Built-In (most recent project): design rendering / finished, then the build -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-arched-heading">
       <div class="container">
         <header class="project-gallery-header">
           <div class="section-badge"><span class="section-badge__num">01</span> Series</div>
+          <div class="divider--accent"></div>
+          <h2 id="gallery-arched-heading" class="h2-section project-gallery-title">Arched <em>Built-In</em></h2>
+        </header>
+        <div class="before-after-grid before-after-grid--portrait" data-reveal="stagger" data-gallery="arched">
+          <figure class="before-after-figure photo-cell">
+            <span class="before-after-label">Design</span>
+            <img class="gallery-img" src="/images/cabinetry/cab-arched-design.jpg" alt="Design rendering of an arched built-in with fluted pilasters, mirrored back and a wood counter" loading="lazy" decoding="async" data-caption="Arched Built-In — design rendering" />
+          </figure>
+          <figure class="before-after-figure photo-cell">
+            <span class="before-after-label">Finished</span>
+            <img class="gallery-img" src="/images/cabinetry/cab-arched-finished-01.jpg" alt="Finished arched built-in installed, lit arch, antique mirror back, fluted pilasters and drawer" loading="lazy" decoding="async" data-caption="Arched Built-In — finished" />
+          </figure>
+        </div>
+        <div class="project-photo-grid project-photo-grid--3col" data-reveal="stagger" data-gallery="arched">
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-build-01.jpg" alt="Arch face frame clamped in the shop with a fan of bar clamps" loading="lazy" decoding="async" data-caption="Arched Built-In — gluing up the arch" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-build-02.jpg" alt="Lower cabinet in the shop before finish, fluted drawer front and raised panel doors" loading="lazy" decoding="async" data-caption="Arched Built-In — lower cabinet in the shop" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-build-03.jpg" alt="Lower cabinet before finish, angled view of fluted pilaster and base molding" loading="lazy" decoding="async" data-caption="Arched Built-In — fluted pilaster detail" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-build-04.jpg" alt="Close-up of the curved wood arch molding and its joint" loading="lazy" decoding="async" data-caption="Arched Built-In — curved arch molding" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-finished-02.jpg" alt="Finished arched built-in from an angle, with the dining room beyond" loading="lazy" decoding="async" data-caption="Arched Built-In — finished, angled view" /></div>
+          <div class="photo-cell"><img class="gallery-img" src="/images/cabinetry/cab-arched-finished-03.jpg" alt="Finished built-in close-up of fluted pilaster, wood counter and lit shelves" loading="lazy" decoding="async" data-caption="Arched Built-In — pilaster and counter detail" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — Built-In Entertainment Center (4-col, 1 row) -->
+    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-entertainment-heading">
+      <div class="container">
+        <header class="project-gallery-header">
+          <div class="section-badge"><span class="section-badge__num">02</span> Series</div>
           <div class="divider--accent"></div>
           <h2 id="gallery-entertainment-heading" class="h2-section project-gallery-title">Built-In <em>Entertainment Center</em></h2>
         </header>
@@ -143,11 +176,11 @@
       </div>
     </section>
 
-    <!-- SECTION 2 — Variety (moved up from end) -->
-    <section class="project-gallery-section py-section section--raised" aria-labelledby="gallery-variety-heading">
+    <!-- SECTION 3 — Variety (moved up from end) -->
+    <section class="project-gallery-section py-section" aria-labelledby="gallery-variety-heading">
       <div class="container">
         <header class="project-gallery-header u-center">
-          <div class="section-badge u-jc-center"><span class="section-badge__num">02</span> Portfolio Overview</div>
+          <div class="section-badge u-jc-center"><span class="section-badge__num">03</span> Portfolio Overview</div>
           <div class="divider--accent u-mx-auto"></div>
           <h2 id="gallery-variety-heading" class="h2-section project-gallery-title">Variety of Cabinetry <em>Worked On Over The Years</em></h2>
         </header>
@@ -169,7 +202,7 @@
              aria-labelledby="gallery-4-heading">
       <div class="container">
         <header class="project-gallery-header">
-          <div class="section-badge"><span class="section-badge__num">03</span> Series</div>
+          <div class="section-badge"><span class="section-badge__num">04</span> Series</div>
           <div class="divider--accent"></div>
           <h2 id="gallery-4-heading" class="h2-section project-gallery-title">Curved Bar Cabinet <em>Full Build</em></h2>
         </header>
@@ -189,7 +222,7 @@
     <section class="project-gallery-section py-section" aria-labelledby="gallery-5-heading">
       <div class="container">
         <header class="project-gallery-header">
-          <div class="section-badge"><span class="section-badge__num">04</span> Series</div>
+          <div class="section-badge"><span class="section-badge__num">05</span> Series</div>
           <div class="divider--accent"></div>
           <h2 id="gallery-5-heading" class="h2-section project-gallery-title"><em>Finished</em></h2>
         </header>
